@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import app from "../firebase"
+import { app, auth } from "../../firebase"
 import { getDownloadURL, getStorage, ref, uploadBytesResumable, deleteObject } from 'firebase/storage';
 import { getFirestore } from "firebase/firestore";
-import { collection, doc, setDoc } from "firebase/firestore"; 
+import { doc, setDoc } from "firebase/firestore"; 
 
 function Upload() {
 
   const [val, setVal] = useState("");
   const [file, setFile] = useState();
+  const [fileName, setFileName] = useState("")
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const fileName = new Date().getTime() + file.name;
+    const tempFileName = new Date().getTime() + file.name;
     const storage = getStorage(app);
-    const storageRef = ref(storage, fileName);
+    const storageRef = ref(storage, tempFileName);
     const uploadTask = uploadBytesResumable(storageRef, file);
     uploadTask.on('state_changed',
       (snapshot) => {
@@ -44,19 +45,20 @@ function Upload() {
         const data = await response.json();
         setVal(data);
         const db = getFirestore(app);
-        const toUpload =
-        { 
-          createdOn : Date(),
-          updatedOn : Date(),
-          url : data.url
-        }
-        const fileRef = doc(db, "Files", "firstuser" );
+        const toUpload = {};
+        toUpload[fileName] =  { 
+                          createdOn : Date(),
+                          updatedOn : Date(),
+                          url : data.url
+                        }
+        console.log(toUpload)
+        const fileRef = doc(db, "Files", auth.currentUser.uid );
         deleteObject(storageRef).then(() => {
           console.log("File deleted successfully")
         }).catch((error) => {
           console.log(error);
         });
-        await setDoc(fileRef, {filename : toUpload} ,{merge: true})
+        await setDoc(fileRef, toUpload ,{merge: true})
       }
     );
   };
@@ -64,10 +66,11 @@ function Upload() {
   return (
     <div className="App">
       <form onSubmit={handleSubmit}>
-
+        <input type="text" placeholder='name of file' required onChange={ e => setFileName(e.target.value) } />
         <input type="file" required onChange={e =>setFile(e.target.files[0])}/>
         <input type="submit" value="done" />
       </form>
+      <div>{fileName}</div>
       {val &&
        
        
