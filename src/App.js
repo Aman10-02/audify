@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 
@@ -34,14 +33,12 @@ function App() {
 
   return (
     <div className="App">
-    <MyNavbar />
+    <MyNavbar userName = {userName} />
     <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={<Home name={userName} />} />
-          <Route path="/upload" element={<Upload name={userName} />} />
-          <Route path="/" element={<HomePage/>}></Route>
-          <Route path="/login" element={<h1>Login</h1>}></Route>
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/" element={<HomePage userName={userName} />}></Route>
     </Routes>
     </div>
   );

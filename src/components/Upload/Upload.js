@@ -3,9 +3,10 @@ import { app, auth } from "../../firebase"
 import { getDownloadURL, getStorage, ref, uploadBytesResumable, deleteObject } from 'firebase/storage';
 import { getFirestore } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore"; 
+import { useNavigate } from "react-router-dom"
 
 function Upload() {
-
+  const navigate = useNavigate();
   const [val, setVal] = useState("");
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("")
@@ -59,6 +60,7 @@ function Upload() {
           console.log(error);
         });
         await setDoc(fileRef, toUpload ,{merge: true})
+        navigate('/');
       }
     );
   };
