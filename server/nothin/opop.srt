@@ -1,0 +1,12 @@
+1
+00:00:00,000 --> 00:00:05,040
+My name is Patthay, I am a Gujarat.
+
+2
+00:00:07,040 --> 00:00:11,040
+I am a Guwati, I am a Guwati.
+
+3
+00:00:11,040 --> 00:00:17,040
+I am a Guwati, I am a Guwati.
+
