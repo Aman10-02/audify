@@ -3,7 +3,7 @@ const { spawn } = require("child_process");
 const getText = () => {
     return new Promise((resolve, reject) => {
         console.log("inside promise");
-        const outdata = spawn( "whisper", ["temp.mp3", "--model", "tiny", "--output_format", "txt", "--output_format", "vtt", "--output_format", "srt", "--output_format", "tsv"], {cwd : "./videos"});
+        const outdata = spawn( "whisper", ["temp.mp3", "--model", "tiny", "--output_format", "srt"], {cwd : "./videos"});
         
         outdata.stdout.pipe(process.stdout);
 
