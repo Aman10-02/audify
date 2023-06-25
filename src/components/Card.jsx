@@ -6,11 +6,11 @@ import Button from 'react-bootstrap/Button';
 import ReactAudioPlayer from "react-audio-player";
 import { doc, getDoc, collection, getFirestore } from "firebase/firestore"
 import { auth, app } from '../firebase';
-<<<<<<< HEAD
 
-=======
+
+
 import moment from 'moment'
->>>>>>> amanWhisper
+
 
 
 
@@ -43,19 +43,11 @@ const BookCard = () => {
                 {/* <Card.Img variant="bottom" src="https://images.mubicdn.net/images/film/164456/cache-663434-1617639647/image-w1280.jpg?size=800x" /> */}
                 <Card.Body>
                   <ReactAudioPlayer src={auds[aud].url} controls />
-<<<<<<< HEAD
-                  <Card.Title>Created on: {auds[aud].createdOn}</Card.Title>
-                  <Card.Title>Last modified: {auds[aud].updatedOn} </Card.Title>
-                  <Card.Title>Duration:</Card.Title>
-                  <Card.Title>Comments:</Card.Title>
-                  {/* <Button variant="info">View</Button> */}
-=======
                   <Card.Title>Created on: {moment(auds[aud].createdOn).fromNow()}</Card.Title>
                   <Card.Title>Last modified: {moment(auds[aud].updatedOn).fromNow()} </Card.Title>
                   <Card.Title>Duration: {auds[aud].duration ? auds[aud].duration : ""} </Card.Title>
                   <Card.Title>Comments:</Card.Title>
                   <Button variant="info">View</Button>
->>>>>>> amanWhisper
                 </Card.Body>
               </Card>
             </Col>
