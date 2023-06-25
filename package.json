@@ -11,6 +11,10 @@
     "concurrently": "^8.2.0",
     "firebase": "^9.22.2",
     "fluent-ffmpeg": "^2.1.2",
+<<<<<<< HEAD
+=======
+    "moment": "^2.29.4",
+>>>>>>> amanWhisper
     "react": "^18.2.0",
     "react-audio-player": "^0.17.0",
     "react-bootstrap": "^2.7.4",
