@@ -86,11 +86,7 @@
   .Login-footer p span a:hover {
     color: #aa2aff;
   }
-  .navbar-expand {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    position: sticky;
-}
+ 
   .divider {
     display: flex;
     align-items: center;

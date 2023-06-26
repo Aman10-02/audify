@@ -60,13 +60,13 @@ function Signup() {
           }
         />
         <InputControl
-          label="Password"
+          label="Password" type='password'
           placeholder="Enter password"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, pass: event.target.value }))
           }
         />
-       
+<div className="divider"></div>
         <div className="Signup-footer">
           <b className="error">{errorMsg}</b>
           <button onClick={handleSubmission} disabled={submitButtonDisabled}>
