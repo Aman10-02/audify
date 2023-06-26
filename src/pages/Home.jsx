@@ -7,14 +7,29 @@ const HomePage = () => {
 
     return (
         <div>
-        <div className="container" style={{border: 'groove', 'borderRadius':'5px', marginTop: '20px', marginBottom: '20px'}}>
+
+        <div className="container" style={{border: 'groove', 'borderRadius':'5px',
+         marginTop: '20px',
+          marginBottom: '20px'
+        }}
+          >
+            <div
+             style={{ 
+                display:'flex', justifyContent:'space-between',alignItems : 'center'
+            }}
+            >
+           <div>
             <h1 className='text-primary'>Hey Sparsh,</h1>
             <hr style={{background: "cornflowerblue", height: "3px", border: "none"}}/>
             <h3 className='text-primary'>Here are your recent audios:</h3>
-                <BookCard />
+            </div>
+            <Button variant="success" style={{ marginLeft: '10px' }}>ADD</Button>
         </div>
-        <Button variant="success" style={{display: "flex", margin: 'auto', marginBottom: '5px' , with : '10px'}}>ADD</Button> 
-        </div>  
+     <BookCard/>
+      
+        </div> 
+
+        </div> 
     );
 };
 
