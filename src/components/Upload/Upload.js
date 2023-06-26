@@ -10,6 +10,7 @@ import {
 import { getFirestore } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import './Upload.css'
 
 function Upload() {
   const navigate = useNavigate();
@@ -98,7 +99,7 @@ function Upload() {
         {/* <input type="submit" value="done" /> */}
       </form>
       <div>{fileName}</div>
-      {val &&
+      {/* {val &&
        
        
       <>
@@ -108,7 +109,7 @@ function Upload() {
          audio.play();
         }} >play</div>
       </>
-      }
+      } */}
       
     </div>
   );

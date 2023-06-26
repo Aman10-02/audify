@@ -20,7 +20,7 @@ const BookCard = () => {
   }, []);
   
   const fetchData = async () => {
-      const docref = await doc(db, "Files", user );
+      const docref = doc(db, "Files", user);
       const dataref = await getDoc(docref);
       if(dataref.exists()){
         setAuds(dataref.data())
