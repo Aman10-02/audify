@@ -97,26 +97,7 @@ cursor: pointer;
 }
 
 /* Add these styles in your Signup.css file */
-.divider {
-display: flex;
-align-items: center;
-text-align: center;
-margin: 10px 0;
-}
 
-.divider::before,
-.divider::after {
-content: "";
-flex-grow: 1;
-height: 1px;
-background-color: #ccc;
-}
-
-.divider span {
-padding: 0 10px;
-color: #ccc;
-font-weight: bold;
-}
 
 .Signup-footer p {
   font-weight: 700;
