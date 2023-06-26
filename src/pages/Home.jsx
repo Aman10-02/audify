@@ -4,6 +4,11 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../firebase';
 import Swal from 'sweetalert2';
+import { RiFileAddLine } from 'react-icons/ri';
+import { IconName } from "react-icons/gr";
+
+
+
 // import { useFirebase } from '../context/Firebase';
 
 const HomePage = ({userName}) => {
@@ -56,7 +61,22 @@ const HomePage = ({userName}) => {
         <Button 
         variant="success"
         onClick={handleAddClick}
-         style={{display: "flex", marginLeft: 'auto', marginBottom: '5px'}}>ADD</Button> 
+        style={{
+          position: 'fixed',
+    bottom: '10px',
+    right: '10px',
+    zIndex: '9999',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '10px',
+    borderRadius: '50%',
+    width: '50px',
+    height: '50px',
+        }}><RiFileAddLine style={{  
+        marginRight: '4px',
+        fontSize: '24px',
+        fontWeight: 'bold', }} /> </Button> 
         </div>  
     );
 };
