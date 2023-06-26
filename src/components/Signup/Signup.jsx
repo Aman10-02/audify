@@ -66,7 +66,7 @@ function Signup() {
             setValues((prev) => ({ ...prev, pass: event.target.value }))
           }
         />
-
+       
         <div className="Signup-footer">
           <b className="error">{errorMsg}</b>
           <button onClick={handleSubmission} disabled={submitButtonDisabled}>

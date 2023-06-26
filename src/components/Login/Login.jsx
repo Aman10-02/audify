@@ -41,20 +41,20 @@ function Login() {
         <h1 className="Login-heading">Login</h1>
 
         <InputControl
-          label="Email"
+          label="Email" type="email"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, email: event.target.value }))
           }
           placeholder="Enter email address"
         />
         <InputControl
-          label="Password"
+          label="Password" type="password"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, pass: event.target.value }))
           }
           placeholder="Enter Password"
         />
-
+    <div className="divider"></div>
         <div className="Login-footer">
           <b className="error">{errorMsg}</b>
           <button disabled={submitButtonDisabled} onClick={handleSubmission}>
