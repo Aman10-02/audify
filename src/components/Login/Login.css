@@ -68,3 +68,26 @@
     font-size: 1rem;
     text-decoration: none;
   }
+  .divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 10px 0;
+
+}
+.divider::before,
+.divider::after{
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background-color: gray;
+
+
+}
+.divider span{
+  padding : 0 10px;
+  color: black;
+  font-weight: thin;
+  font-family: sans-serif;
+
+}
