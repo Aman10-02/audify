@@ -12,6 +12,7 @@ const HomePage = ({userName}) => {
     const handleAddClick = () => {
         if (user) {
           Swal.fire({
+            
             title: 'Add your files',
             html:
             '<input id="fileInput" class="swal2-input custom-swal-input" placeholder="Enter file name" type="text">' +
