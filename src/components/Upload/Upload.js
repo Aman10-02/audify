@@ -16,6 +16,7 @@ import AudioPlayer from "../AudioPlayer";
 import ReactAudioPlayer from "react-audio-player";
 import axios from "axios";
 import srtParser2 from "srt-parser-2";
+import "./Upload.css";
 
 function Upload() {
   const parser = new srtParser2();
@@ -82,54 +83,61 @@ function Upload() {
     );
   };
 
-  const [currentTime, setCurrentTime] = useState();
-  const [captions, setCaptions] = useState([]);
-  useEffect(() => {
-    const loadCaptions = async () => {
-      console.log("inside load captions");
-      const captionsData = await axios.get("aman.srt");
-      console.log("cptData", captionsData);
-      const captionsText = await captionsData.data;
-      const parsedCaptions = parser.fromSrt(captionsText);
-      setCaptions(parsedCaptions);
-      console.log("cpt text", captionsText);
-      console.log(parsedCaptions);
-    };
+  // const [currentTime, setCurrentTime] = useState();
+  // const [captions, setCaptions] = useState([]);
+  // useEffect(() => {
+  //   const loadCaptions = async () => {
+  //     console.log("inside load captions");
+  //     const captionsData = await axios.get("aman.srt");
+  //     console.log("cptData", captionsData);
+  //     const captionsText = await captionsData.data;
+  //     const parsedCaptions = parser.fromSrt(captionsText);
+  //     setCaptions(parsedCaptions);
+  //     console.log("cpt text", captionsText);
+  //     console.log(parsedCaptions);
+  //   };
 
-    loadCaptions();
-    // Update the current time based on the video player's time
-    const handleTimeUpdate = (event) => {
-      setCurrentTime(Math.floor(event.target.currentTime));
-    };
+  //   loadCaptions();
+  //   // Update the current time based on the video player's time
+  //   const handleTimeUpdate = (event) => {
+  //     setCurrentTime(Math.floor(event.target.currentTime));
+  //   };
 
-    const audioElement = document.getElementById("toChange");
-    console.log(audioElement);
-    audioElement.addEventListener("timeupdate", handleTimeUpdate);
+  //   const audioElement = document.getElementById("toChange");
+  //   console.log(audioElement);
+  //   audioElement.addEventListener("timeupdate", handleTimeUpdate);
 
-    return () => {
-      // Clean up the event listener
-      audioElement.removeEventListener("timeupdate", handleTimeUpdate);
-    };
-  }, []);
+  //   return () => {
+  //     // Clean up the event listener
+  //     audioElement.removeEventListener("timeupdate", handleTimeUpdate);
+  //   };
+  // }, []);
 
   return (
-    <div className="App">
+    <div className="Add">
+      <h2>Add a New Video</h2>
       <form onSubmit={handleSubmit}>
+        <label>File Name:</label>
         <input
+          className="textt"
           type="text"
-          placeholder="name of file"
           required
           onChange={(e) => setFileName(e.target.value)}
         />
-        <input
-          type="file"
-          required
-          onChange={(e) => setFile(e.target.files[0])}
-        />
-        <input type="submit" value="done" />
+        <div className="btn">
+          <button>Select File</button>
+          <input
+            className="upload"
+            type="file"
+            required
+            onChange={(e) => setFile(e.target.files[0])}
+          />
+        </div>
+
+        {/* <input type="submit" value="done" /> */}
       </form>
-      <div>{fileName}</div>
-      {val && (
+      {/* <div>{fileName}</div> */}
+      {/* {val && (
         <>
           <a href={val.url}>click here to download audio</a>
           <div
@@ -147,11 +155,11 @@ function Upload() {
             play
           </div>
         </>
-      )}
-      <AudioPlayer captions={captions} currentTime={currentTime} />
+      )} */}
+      {/* <AudioPlayer captions={captions} currentTime={currentTime} /> */}
       {/* <div className="caption">"this is caption" {console.log(currentCaption)}</div> */}
-      <ReactAudioPlayer id="toChange" src="aman.mp3" controls />
-      <div>{currentTime}</div>
+      {/* <ReactAudioPlayer id="toChange" src="aman.mp3" controls /> */}
+      {/* <div>{currentTime}</div> */}
     </div>
   );
 }
