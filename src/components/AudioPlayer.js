@@ -24,7 +24,7 @@ const AudioPlayer=( {captions, currentTime} ) => {
 
   // useEffect(() => {
     const currentCaption =
-   captions.filter((caption) => caption.startSeconds <= currentTime && caption.endSeconds > currentTime)
+   captions.filter((caption) => caption.startTime/1000 <= currentTime && caption.endTime/1000 > currentTime)
   // }, []);
 
 

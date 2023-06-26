@@ -16,7 +16,7 @@ const getText = () => {
         outdata.on("close", code => {
             console.log(`child process exited with code ${code}`);
             if(code === 0){
-                resolve("sucess");
+                resolve("success");
             }else{
                 reject("error");
             }

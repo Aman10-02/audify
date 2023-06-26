@@ -20,6 +20,9 @@
     "nodemon": "^2.0.22",
     "sox": "^0.1.0",
     "sox-stream": "^2.0.6",
+    "srt-parser-2": "^1.2.3",
+    "srt-to-obj": "^0.0.3",
+    "subtitles-parser": "^0.0.2",
     "util": "^0.12.5"
   }
 }

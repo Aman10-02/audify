@@ -4,15 +4,8 @@ import { getDownloadURL, getStorage, ref, uploadBytesResumable, deleteObject } f
 import { getFirestore } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore"; 
 import { useNavigate } from "react-router-dom";
-// import moment from 'moment';
-import AudioPlayer from '../AudioPlayer';
-
-import ReactAudioPlayer from "react-audio-player";
-import axios from 'axios';
-import srtParser2 from 'srt-parser-2';
 
 function Upload() {
-  const parser = new srtParser2();
   const navigate = useNavigate();
   const [val, setVal] = useState("");
   const [file, setFile] = useState();
@@ -43,7 +36,7 @@ function Upload() {
       },
       async () => {
         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-        const response = await fetch("http://localhost:5000/", {
+        const response = await fetch("http://localhost:5000/upload", {
           method: "POST",
           headers: {
             'Content-Type' : 'application/json'
@@ -59,6 +52,7 @@ function Upload() {
                           createdOn : Date(),
                           updatedOn : Date(),
                           url : data.url,
+                          captions : data.captions,
                           duration: data.duration
                         }
         console.log(toUpload)
@@ -73,36 +67,6 @@ function Upload() {
       }
     );
   };
-
-  const [currentTime, setCurrentTime] = useState();
-  const [captions, setCaptions] = useState([]);
-  useEffect(() => {
-    const loadCaptions = async () => {
-      console.log("inside load captions")
-      const captionsData = await axios.get("aman.srt");
-      console.log("cptData",captionsData)
-      const captionsText = await captionsData.data;
-      const parsedCaptions = parser.fromSrt(captionsText);
-      setCaptions(parsedCaptions);
-      console.log("cpt text",captionsText)
-      console.log(parsedCaptions)
-    };
-
-    loadCaptions();
-    // Update the current time based on the video player's time
-    const handleTimeUpdate = (event) => {
-      setCurrentTime(Math.floor(event.target.currentTime));
-    };
-
-    const audioElement = document.getElementById("toChange");
-    console.log(audioElement)
-    audioElement.addEventListener('timeupdate', handleTimeUpdate);
-
-    return () => {
-      // Clean up the event listener
-      audioElement.removeEventListener('timeupdate', handleTimeUpdate);
-    };
-  }, []);
 
   return (
     <div className="App">
@@ -123,10 +87,7 @@ function Upload() {
         }} >play</div>
       </>
       }
-      <AudioPlayer captions={captions} currentTime={currentTime} />
-      {/* <div className="caption">"this is caption" {console.log(currentCaption)}</div> */}
-      <ReactAudioPlayer id='toChange' src="aman.mp3" controls />
-      <div>{currentTime}</div>
+      
     </div>
   )
 }

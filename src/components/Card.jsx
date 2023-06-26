@@ -4,9 +4,10 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import ReactAudioPlayer from "react-audio-player";
-import { doc, getDoc, collection, getFirestore } from "firebase/firestore"
+import { doc, getDoc, getFirestore } from "firebase/firestore"
 import { auth, app } from '../firebase';
 import moment from 'moment'
+import { Link } from 'react-router-dom';
 
 
 
@@ -42,8 +43,14 @@ const BookCard = () => {
                   <Card.Title>Created on: {moment(auds[aud].createdOn).fromNow()}</Card.Title>
                   <Card.Title>Last modified: {moment(auds[aud].updatedOn).fromNow()} </Card.Title>
                   <Card.Title>Duration: {auds[aud].duration ? auds[aud].duration : ""} </Card.Title>
-                  <Card.Title>Comments:</Card.Title>
-                  <Button variant="info">View</Button>
+                  <Card.Title>Comments: {auds[aud].srtUrl ? "Available" : "Unavailable"} </Card.Title>
+                  <Link to="/view" state={ {
+                    fileName: aud,
+                    captions: auds[aud].captions ? auds[aud].captions : "",
+                    url: auds[aud].url ? auds[aud].url : ""
+                  }  } >
+                    <Button variant="info">View</Button>
+                  </Link>
                 </Card.Body>
               </Card>
             </Col>

@@ -18,6 +18,7 @@ import './App.css';
 
 //Pages
 import HomePage from './pages/Home';
+import View from "./components/View/View";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -38,6 +39,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/upload" element={<Upload />} />
+          <Route path="/view" element={<View />} />
+
           <Route path="/" element={<HomePage userName={userName} />}></Route>
     </Routes>
     </div>
