@@ -13,7 +13,7 @@ const HomePage = () => {
             <h3 className='text-primary'>Here are your recent audios:</h3>
                 <BookCard />
         </div>
-        <Button variant="success" style={{display: "flex", marginLeft: 'auto', marginBottom: '5px'}}>ADD</Button> 
+        <Button variant="success" style={{display: "flex", margin: 'auto', marginBottom: '5px'}}>ADD</Button> 
         </div>  
     );
 };
