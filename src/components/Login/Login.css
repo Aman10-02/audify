@@ -17,6 +17,9 @@
     color: black;
 }
  
+.Login-footer button:hover {
+  background-color: #aa2aff;
+}
   .Login-innerBox {
     min-width: 480px;
     height: fit-content;
@@ -80,6 +83,14 @@
     font-size: 1rem;
     text-decoration: none;
   }
+  .Login-footer p span a:hover {
+    color: #aa2aff;
+  }
+  .navbar-expand {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    position: sticky;
+}
   .divider {
     display: flex;
     align-items: center;
