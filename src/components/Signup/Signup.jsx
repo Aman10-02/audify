@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import Swal from 'sweetalert2';
 
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
@@ -23,6 +24,16 @@ function Signup() {
       return;
     }
     setErrorMsg("");
+    
+    if (values.pass.length < 8) {
+      Swal.fire({
+        title: "Password Error",
+        text: "Password should be at least 8 characters long",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
 
     setSubmitButtonDisabled(true);
     createUserWithEmailAndPassword(auth, values.email, values.pass)

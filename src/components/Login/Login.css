@@ -16,7 +16,9 @@
     padding: 10px 15px;
     color: black;
 }
- 
+h1.Login-heading:hover{
+  color: #aa2aff;
+}
 .Login-footer button:hover {
   background-color: #aa2aff;
 }

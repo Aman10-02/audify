@@ -9,6 +9,9 @@
   align-items: center;
   
 }
+h1.Signup-heading:hover{
+  color: #aa2aff;
+}
 .InputControl-container input {
   border-radius: 5px;
   border: 1px solid #dddddd;
