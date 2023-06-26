@@ -3,12 +3,8 @@ import { app, auth } from "../../firebase"
 import { getDownloadURL, getStorage, ref, uploadBytesResumable, deleteObject } from 'firebase/storage';
 import { getFirestore } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore"; 
-<<<<<<< HEAD
-import { useNavigate } from "react-router-dom"
-=======
 import { useNavigate } from "react-router-dom";
 import moment from 'moment';
->>>>>>> amanWhisper
 
 function Upload() {
   const navigate = useNavigate();
@@ -50,21 +46,14 @@ function Upload() {
         });
         const data = await response.json();
         setVal(data);
-<<<<<<< HEAD
-=======
         console.log("first : ", data, JSON.stringify(data))
->>>>>>> amanWhisper
         const db = getFirestore(app);
         const toUpload = {};
         toUpload[fileName] =  { 
                           createdOn : Date(),
                           updatedOn : Date(),
-<<<<<<< HEAD
-                          url : data.url
-=======
                           url : data.url,
                           duration: data.duration
->>>>>>> amanWhisper
                         }
         console.log(toUpload)
         const fileRef = doc(db, "Files", auth.currentUser.uid );
