@@ -120,7 +120,14 @@ const HomePage = ({userName}) => {
             },
           });
         } else {
-          Swal.fire('Login first');
+          Swal.fire({
+            title: 'Login first',
+            showCancelButton: false,
+            confirmButtonText: 'OK',
+          }).then(() => {
+            // Redirect to the login page
+            navigate('/login'); // Replace '/login' with the actual path to your login page
+          });
         }
       };
     return (
