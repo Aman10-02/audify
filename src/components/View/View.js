@@ -11,6 +11,7 @@ function View() {
     let { state } = useLocation();
     const [currentTime, setCurrentTime] = useState();
     const [captions, setCaptions] = useState();
+    const [aud, setAud] = useState();
     const db = getFirestore(app);
     const auth = getAuth();
     const user = auth.currentUser.uid;
@@ -18,7 +19,9 @@ function View() {
     const updateCaptions = async (captions) => {
         await updateDoc(docref, {
                 [state.fileName] : {
+                    ...aud,
                     captions : captions,
+                    updatedOn: Date()
                 }
         })
         setCaptions(captions);
@@ -27,7 +30,8 @@ function View() {
         const fetchData = async () => {
             const dataref = await getDoc(docref);
             const auds = dataref.data()
-            console.log(auds)
+            console.log(auds[state.fileName])
+            setAud(auds[state.fileName])
             setCaptions(auds[state.fileName].captions)
         };
         fetchData();
