@@ -39,7 +39,7 @@ const BookCard = () => {
                 <Card.Header style={{textTransform: "uppercase"}} >{aud}</Card.Header>
                 {/* <Card.Img variant="bottom" src="https://images.mubicdn.net/images/film/164456/cache-663434-1617639647/image-w1280.jpg?size=800x" /> */}
                 <Card.Body>
-                  <ReactAudioPlayer src={auds[aud].url} controls />
+                  {/* <ReactAudioPlayer src={auds[aud].url} controls /> */}
                   <Card.Title>Created on: {moment(auds[aud].createdOn).fromNow()}</Card.Title>
                   <Card.Title>Last modified: {moment(auds[aud].updatedOn).fromNow()} </Card.Title>
                   <Card.Title>Duration: {auds[aud].duration ? auds[aud].duration : ""} </Card.Title>
