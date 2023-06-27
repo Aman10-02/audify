@@ -10,6 +10,7 @@ import {
 import { getFirestore } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import './Upload.css'
 
 function Upload() {
   const navigate = useNavigate();
@@ -100,6 +101,7 @@ function Upload() {
         {/* <input type="submit" value="done" /> */}
       </form>
       <div>{fileName}</div>
+<<<<<<< HEAD
       {val && (
         <>
           <a href={val.url}>click here to download audio</a>
@@ -119,6 +121,20 @@ function Upload() {
           </div>
         </>
       )}
+=======
+      {/* {val &&
+       
+       
+      <>
+        <a href={val.url}  >click here to download audio</a>
+        <div style={{width : "50px", height:"50px", margin:"auto", backgroundColor:"yellow"}} onClick={() => {
+         const audio = new Audio(val.url);
+         audio.play();
+        }} >play</div>
+      </>
+      } */}
+      
+>>>>>>> f7013c2f5ee951871c6ff3a038258302d7cd49fd
     </div>
   );
 }
