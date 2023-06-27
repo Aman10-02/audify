@@ -50,7 +50,13 @@ const HomePage = ({userName}) => {
         }
       };
     return (
-        <div>
+      <div
+      className="homepage-container"
+      style={{
+        backgroundImage: `url(')`, // Set the background image
+       
+      }}
+    >
         <div className="container" style={{border: 'groove', 'borderRadius':'5px', marginTop: '20px', marginBottom: '20px'}}>
             <h1 className='text-primary' style={{textTransform : "capitalize"}} >Hey {userName ? userName : "User"},</h1>
             <hr style={{background: "cornflowerblue", height: "3px", border: "none"}}/>
