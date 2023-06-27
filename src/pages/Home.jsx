@@ -6,7 +6,10 @@ import { app,auth } from '../firebase';
 import Swal from 'sweetalert2';
 import { RiFileAddLine } from 'react-icons/ri';
 import { IconName } from "react-icons/gr";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFile } from '@fortawesome/free-solid-svg-icons';
 import './Home.css'
+
 
 
 // import { useFirebase } from '../context/Firebase';
@@ -102,7 +105,7 @@ const HomePage = ({userName}) => {
               const file = document.getElementById('file').files[0];
               // Handle the file submission or validation here
               if (!file || !fileName) {
-                Swal.showValidationMessage('Please select a file');
+                Swal.showValidationMessage('Please select a file Or Give file Name');
               } else {
                 console.log('File Name:', fileName);
                 console.log('File:', file);
@@ -132,10 +135,11 @@ const HomePage = ({userName}) => {
         </div>
         {/* onClick={ () => { user ? navigate('/upload') : alert('Login First')  }} */}
         <Button 
+        className='bntt'
         variant="success"
         onClick={handleAddClick}
         style={{
-          position: 'fixed',
+    position: 'fixed',
     bottom: '10px',
     right: '10px',
     zIndex: '9999',
@@ -143,13 +147,14 @@ const HomePage = ({userName}) => {
     alignItems: 'center',
     justifyContent: 'center',
     padding: '10px',
-    borderRadius: '50%',
     width: '50px',
     height: '50px',
-        }}><RiFileAddLine style={{  
-        marginRight: '4px',
-        fontSize: '24px',
-        fontWeight: 'bold', }} /> </Button> 
+    background:'black',
+   backgroundBlendMode:'normal',
+   background: 'rgb(238,174,202)',
+background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)',
+
+        }}><FontAwesomeIcon icon={faFile} className="fa-regular fa-file fa-beat-fade fa-lg"    style={{ color: '010213' }} /></Button> 
         </div>  
     );
 };

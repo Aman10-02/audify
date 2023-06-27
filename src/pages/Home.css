@@ -1,8 +1,20 @@
 .homepage-container{
    
-    background-color:red;
+   
+    background-blend-mode: multiply;
 }
 
 .navbar.navbar-expand.navbar-light{
 background-color: black;
+}
+.card-body{
+    background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background-blend-mode:multiply ;
+}
+.card-title{
+    color: black;
+}
+.bntt{
+background-color: white;
 }
