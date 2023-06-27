@@ -130,7 +130,7 @@ const HomePage = ({userName}) => {
         <div className="container" style={{border: 'groove', 'borderRadius':'5px', marginTop: '20px', marginBottom: '20px'}}>
             <h1 style={{color:'aquamarine', textTransform : "capitalize"}}>Hey {userName ? userName : "User"},</h1>
             <hr style={{background: "aquamarine", height: "3px", border: "none"}}/>
-            <h3 style={{color:'aquamarine'}}  > {userName ? "Here are your recent audios:" : "Your audios will appear here"}</h3>
+            <h3 style={{color:'aquamarine'}}  > {userName ? "Please Find Your Recent Audios Here :" : "Your Audios Will Appear Here"}</h3>
                 {userName && <BookCard />}
         </div>
         {/* onClick={ () => { user ? navigate('/upload') : alert('Login First')  }} */}
