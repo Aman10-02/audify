@@ -52,9 +52,9 @@ const HomePage = ({userName}) => {
     return (
         <div>
         <div className="container" style={{border: 'groove', 'borderRadius':'5px', marginTop: '20px', marginBottom: '20px'}}>
-            <h1 className='text-primary' style={{textTransform : "capitalize"}} >Hey {userName ? userName : "User"},</h1>
-            <hr style={{background: "cornflowerblue", height: "3px", border: "none"}}/>
-            <h3 className='text-primary'  > {userName ? "Here are your recent audios:" : "Your audios will appear here"}</h3>
+            <h1 style={{color:'aquamarine', textTransform : "capitalize"}}>Hey {userName ? userName : "User"},</h1>
+            <hr style={{background: "aquamarine", height: "3px", border: "none"}}/>
+            <h3 style={{color:'aquamarine'}}  > {userName ? "Here are your recent audios:" : "Your audios will appear here"}</h3>
                 {userName && <BookCard />}
         </div>
         {/* onClick={ () => { user ? navigate('/upload') : alert('Login First')  }} */}

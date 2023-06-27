@@ -7,6 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase"
 import { signOut } from "firebase/auth";
 
+import logo from "./audify-low-resolution-logo-color-on-transparent-background.png";
+
 const MyNavbar = () => {
 
   const navigate = useNavigate() 
@@ -20,15 +22,32 @@ const MyNavbar = () => {
      })
   }
     return (
-    <Navbar style={{background: 'darkmagenta'}}>
+    <Navbar style={{
+      backgroundImage: 'url(ogImage.jpg)',
+      position: 'sticky',
+      top: '0',
+      left: '0',
+      display: 'flex',
+      width:'100%',
+      zIndex: '100000',
+      }}>
       <Container>
-        <Navbar.Brand style={{color: 'hotpink'}} onClick={() => navigate("/")}><h1>Audify</h1></Navbar.Brand>
+        <Navbar.Brand style={{color: 'hotpink'}} onClick={() => navigate("/")}>
+        <img
+            src={logo}
+            alt="Audify Logo"
+            style={{
+              width: "180px",
+              height: "40px",
+              marginRight: "10px",
+            }}
+          />
+        </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           {/* <Navbar.Text>
             Signed in as: <a href="#login">Mark Otto</a>
           </Navbar.Text> */}
-          <Form><Form.Check type="switch" id="custom-switch" style={{width:'4em'}}/></Form>
           {
           !user ?
           <>
