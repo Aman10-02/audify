@@ -82,8 +82,10 @@ const HomePage = ({userName}) => {
           });
           await setDoc(fileRef, toUpload ,{merge: true})
           navigate('/');
+          window.location.reload(); // Refresh the page
         }
       );
+     
     };
 
 
