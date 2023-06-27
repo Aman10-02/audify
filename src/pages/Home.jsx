@@ -88,48 +88,61 @@ const HomePage = ({userName}) => {
 
 
     const handleAddClick = () => {
-        if (user) {
-          Swal.fire({
-            
-            title: 'Add your files',
-            html:
-            '<input id="fileInput" class="swal2-input custom-swal-input" placeholder="Enter file name" type="text">' +
-            '<label for="file" class="swal2-file-input-label custom-swal-file-input-label">' +
-            'Choose file <input id="file" class="swal2-file-input custom-swal-file-input" type="file" style="display:none">' +
-            '</label>',
-            showCancelButton: true,
-            confirmButtonText: 'Submit',
-            showLoaderOnConfirm: true,
-            preConfirm: async () => {
-              const fileName = document.getElementById('fileInput').value;
-              const file = document.getElementById('file').files[0];
-              // Handle the file submission or validation here
-              if (!file || !fileName) {
-                Swal.showValidationMessage('Please select a file Or Give file Name');
-              } else {
+      if (user) {
+        Swal.fire({
+          title: 'Add your files',
+          html: `
+            <input id="fileInput" class="swal2-input custom-swal-input" placeholder="Enter file name" type="text">
+            <label for="file" class="swal2-file-input-label custom-swal-file-input-label">
+              Choose file <input id="file" class="swal2-file-input custom-swal-file-input" type="file" style="display:none">
+            </label>`,
+          showCancelButton: true,
+          confirmButtonText: 'Submit',
+          showLoaderOnConfirm: true,
+          preConfirm: async () => {
+            const fileName = document.getElementById('fileInput').value;
+            const file = document.getElementById('file').files[0];
+    
+            if (!file || !fileName) {
+              Swal.showValidationMessage('Please select a file or provide a file name');
+            } else {
+              Swal.showLoading(); // Show the loading indicator
+              try {
+                // Simulate an asynchronous operation (replace with your actual logic)
+                await new Promise((resolve) => setTimeout(resolve, 2000));
+    
+                // Process the file submission or validation here
                 console.log('File Name:', fileName);
                 console.log('File:', file);
-                handleSubmit( file, fileName);
+                handleSubmit(file, fileName);
+    
+                Swal.hideLoading(); // Hide the loading indicator
+                Swal.close(); // Close the Swal modal
+              } catch (error) {
+                Swal.hideLoading(); // Hide the loading indicator
+                Swal.showValidationMessage(`Error: ${error.message}`);
               }
-            },
-            allowOutsideClick: () => !Swal.isLoading(),
-            customClass: {
-              confirmButton: 'custom-swal-confirm-button',
-              cancelButton: 'custom-swal-cancel-button',
-              choosefile : 'swal2-file-input',
-            },
-          });
-        } else {
-          Swal.fire({
-            title: 'Login first',
-            showCancelButton: false,
-            confirmButtonText: 'OK',
-          }).then(() => {
-            // Redirect to the login page
-            navigate('/login'); // Replace '/login' with the actual path to your login page
-          });
-        }
-      };
+            }
+          },
+          allowOutsideClick: () => !Swal.isLoading(),
+          customClass: {
+            confirmButton: 'custom-swal-confirm-button',
+            cancelButton: 'custom-swal-cancel-button',
+            choosefile: 'swal2-file-input',
+          },
+        });
+      } else {
+        Swal.fire({
+          title: 'Login first',
+          showCancelButton: false,
+          confirmButtonText: 'OK',
+        }).then(() => {
+          // Redirect to the login page
+          navigate('/login'); // Replace '/login' with the actual path to your login page
+        });
+      }
+    };
+    
     return (
       <div
       className="homepage-container"
