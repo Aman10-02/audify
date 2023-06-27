@@ -4,6 +4,12 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom'
 import { app,auth } from '../firebase';
 import Swal from 'sweetalert2';
+import { RiFileAddLine } from 'react-icons/ri';
+import { IconName } from "react-icons/gr";
+import './Home.css'
+
+
+// import { useFirebase } from '../context/Firebase';
 import {
   getDownloadURL,
   getStorage,
@@ -115,18 +121,35 @@ const HomePage = ({userName}) => {
         }
       };
     return (
-        <div>
+      <div
+      className="homepage-container"
+    >
         <div className="container" style={{border: 'groove', 'borderRadius':'5px', marginTop: '20px', marginBottom: '20px'}}>
-            <h1 className='text-primary' style={{textTransform : "capitalize"}} >Hey {userName ? userName : "User"},</h1>
-            <hr style={{background: "cornflowerblue", height: "3px", border: "none"}}/>
-            <h3 className='text-primary'  > {userName ? "Here are your recent audios:" : "Your audios will appear here"}</h3>
+            <h1 style={{color:'aquamarine', textTransform : "capitalize"}}>Hey {userName ? userName : "User"},</h1>
+            <hr style={{background: "aquamarine", height: "3px", border: "none"}}/>
+            <h3 style={{color:'aquamarine'}}  > {userName ? "Here are your recent audios:" : "Your audios will appear here"}</h3>
                 {userName && <BookCard />}
         </div>
         {/* onClick={ () => { user ? navigate('/upload') : alert('Login First')  }} */}
         <Button 
         variant="success"
         onClick={handleAddClick}
-         style={{display: "flex", marginLeft: 'auto', marginBottom: '5px'}}>ADD</Button> 
+        style={{
+          position: 'fixed',
+    bottom: '10px',
+    right: '10px',
+    zIndex: '9999',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '10px',
+    borderRadius: '50%',
+    width: '50px',
+    height: '50px',
+        }}><RiFileAddLine style={{  
+        marginRight: '4px',
+        fontSize: '24px',
+        fontWeight: 'bold', }} /> </Button> 
         </div>  
     );
 };
