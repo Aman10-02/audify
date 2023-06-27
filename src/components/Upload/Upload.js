@@ -54,22 +54,24 @@ function Upload() {
         console.log("first : ", data, JSON.stringify(data));
         const db = getFirestore(app);
         const toUpload = {};
-        toUpload[fileName] =  { 
-                          createdOn : Date(),
-                          updatedOn : Date(),
-                          url : data.url,
-                          captions : data.captions,
-                          duration: data.duration
-                        }
-        console.log(toUpload)
-        const fileRef = doc(db, "Files", auth.currentUser.uid );
-        deleteObject(storageRef).then(() => {
-          console.log("File deleted successfully")
-        }).catch((error) => {
-          console.log(error);
-        });
-        await setDoc(fileRef, toUpload ,{merge: true})
-        navigate('/');
+        toUpload[fileName] = {
+          createdOn: Date(),
+          updatedOn: Date(),
+          url: data.url,
+          captions: data.captions,
+          duration: data.duration,
+        };
+        console.log(toUpload);
+        const fileRef = doc(db, "Files", auth.currentUser.uid);
+        deleteObject(storageRef)
+          .then(() => {
+            console.log("File deleted successfully");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        await setDoc(fileRef, toUpload, { merge: true });
+        navigate("/");
       }
     );
   };
@@ -98,18 +100,25 @@ function Upload() {
         {/* <input type="submit" value="done" /> */}
       </form>
       <div>{fileName}</div>
-      {val &&
-       
-       
-      <>
-        <a href={val.url}  >click here to download audio</a>
-        <div style={{width : "50px", height:"50px", margin:"auto", backgroundColor:"yellow"}} onClick={() => {
-         const audio = new Audio(val.url);
-         audio.play();
-        }} >play</div>
-      </>
-      }
-      
+      {val && (
+        <>
+          <a href={val.url}>click here to download audio</a>
+          <div
+            style={{
+              width: "50px",
+              height: "50px",
+              margin: "auto",
+              backgroundColor: "yellow",
+            }}
+            onClick={() => {
+              const audio = new Audio(val.url);
+              audio.play();
+            }}
+          >
+            play
+          </div>
+        </>
+      )}
     </div>
   );
 }
