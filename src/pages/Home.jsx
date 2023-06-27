@@ -6,7 +6,7 @@ import { auth } from '../firebase';
 import Swal from 'sweetalert2';
 import { RiFileAddLine } from 'react-icons/ri';
 import { IconName } from "react-icons/gr";
-
+import './Home.css'
 
 
 // import { useFirebase } from '../context/Firebase';
@@ -46,21 +46,17 @@ const HomePage = ({userName}) => {
             },
           });
         } else {
-          alert(Swal.fire('Login first'));
+          Swal.fire('Login first');
         }
       };
     return (
       <div
       className="homepage-container"
-      style={{
-        backgroundImage: `url(')`, // Set the background image
-       
-      }}
     >
         <div className="container" style={{border: 'groove', 'borderRadius':'5px', marginTop: '20px', marginBottom: '20px'}}>
-            <h1 className='text-primary' style={{textTransform : "capitalize"}} >Hey {userName ? userName : "User"},</h1>
+            <h1 className='text-primary' style={{textTransform : "capitalize",fontFamily:'13'}} >Hello there,  {userName ? userName : "User"},</h1>
             <hr style={{background: "cornflowerblue", height: "3px", border: "none"}}/>
-            <h3 className='text-primary'  > {userName ? "Here are your recent audios:" : "Your audios will appear here"}</h3>
+            <h3 className='text-primary'  > {userName ? "Please find your recent audios here:" : "Your audio will be showcased here:"}</h3>
                 {userName && <BookCard />}
         </div>
         {/* onClick={ () => { user ? navigate('/upload') : alert('Login First')  }} */}
