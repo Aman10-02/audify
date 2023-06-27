@@ -30,7 +30,7 @@ function App() {
         setUserName(user.displayName);
       } else setUserName("");
     });
-  }, []);
+  });
 
   return (
     <div className="App">
@@ -38,8 +38,10 @@ function App() {
     <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          {userName && <>
           <Route path="/upload" element={<Upload />} />
           <Route path="/view" element={<View />} />
+          </>}
 
           <Route path="/" element={<HomePage userName={userName} />}></Route>
     </Routes>

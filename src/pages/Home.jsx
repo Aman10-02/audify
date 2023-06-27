@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BookCard from '../components/Card';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom'
-import { auth } from '../firebase';
+import { app,auth } from '../firebase';
 import Swal from 'sweetalert2';
 import { RiFileAddLine } from 'react-icons/ri';
 import { IconName } from "react-icons/gr";
@@ -10,10 +10,80 @@ import './Home.css'
 
 
 // import { useFirebase } from '../context/Firebase';
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  deleteObject,
+} from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 const HomePage = ({userName}) => {
+
+
+
     const navigate = useNavigate();
     const user = auth.currentUser;
+
+    const handleSubmit = async (file, fileName) => {  
+      console.log("inside handle submit",file,fileName)
+      const tempFileName = new Date().getTime() + file.name;
+      const storage = getStorage(app);
+      const storageRef = ref(storage, tempFileName);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+            default:
+          }
+        },
+        (error) => {},
+        async () => {
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          const response = await fetch("http://localhost:5000/upload", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ url: downloadURL }),
+          });
+          const data = await response.json();
+          console.log("first : ", data, JSON.stringify(data));
+          const db = getFirestore(app);
+          const toUpload = {};
+          toUpload[fileName] =  { 
+                            createdOn : Date(),
+                            updatedOn : Date(),
+                            url : data.url,
+                            captions : data.captions,
+                            duration: data.duration
+                          }
+          console.log(toUpload)
+          const fileRef = doc(db, "Files", auth.currentUser.uid );
+          deleteObject(storageRef).then(() => {
+            console.log("File deleted successfully")
+          }).catch((error) => {
+            console.log(error);
+          });
+          await setDoc(fileRef, toUpload ,{merge: true})
+          navigate('/');
+        }
+      );
+    };
+
+
     const handleAddClick = () => {
         if (user) {
           Swal.fire({
@@ -27,15 +97,16 @@ const HomePage = ({userName}) => {
             showCancelButton: true,
             confirmButtonText: 'Submit',
             showLoaderOnConfirm: true,
-            preConfirm: () => {
+            preConfirm: async () => {
               const fileName = document.getElementById('fileInput').value;
               const file = document.getElementById('file').files[0];
               // Handle the file submission or validation here
-              if (!file) {
+              if (!file || !fileName) {
                 Swal.showValidationMessage('Please select a file');
               } else {
                 console.log('File Name:', fileName);
                 console.log('File:', file);
+                handleSubmit( file, fileName);
               }
             },
             allowOutsideClick: () => !Swal.isLoading(),
