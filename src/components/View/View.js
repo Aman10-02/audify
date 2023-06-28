@@ -5,14 +5,11 @@ import ReactAudioPlayer from 'react-audio-player';
 import { doc, getDoc, getFirestore, updateDoc } from 'firebase/firestore';
 import { app } from '../../firebase';
 import { getAuth } from 'firebase/auth';
-<<<<<<< HEAD
 
 import '../Upload/Upload.css'
 
 
-=======
-import './View.css';
->>>>>>> d91874336f034e9963a056e91b6f26947ad5014c
+// import './View.css';
 
 function View() {
     let { state } = useLocation();
@@ -57,26 +54,16 @@ function View() {
         };
     }, []);
     return (
-<<<<<<< HEAD
         <>
             <div className='react-audio-player'>
                <ReactAudioPlayer id='toChange' className='react-audio' src={state.url} controls />
             </div>
             <div>{currentTime}</div>
-=======
-        <div className='caption-contain'>
-            
->>>>>>> d91874336f034e9963a056e91b6f26947ad5014c
             {captions &&
                       <AudioPlayer captions={captions} currentTime={currentTime} updateCaptions={updateCaptions} />}
             {/* <div className="caption">"this is caption" {console.log(currentCaption)}</div> */}
-<<<<<<< HEAD
             
         </>
-=======
-            <ReactAudioPlayer id='toChange' src={state.url} controls />
-        </div>
->>>>>>> d91874336f034e9963a056e91b6f26947ad5014c
     )
 }
 
