@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import { signInWithEmailAndPassword } from "firebase/auth";
+=======
+import { signInWithEmailAndPassword,signInWithPopup,GoogleAuthProvider } from "firebase/auth";
+>>>>>>> d72e695a845a203ae5d10857e9776eb02f35a24a
 
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
@@ -35,6 +39,23 @@ function Login() {
         setErrorMsg(err.message);
       });
   };
+<<<<<<< HEAD
+=======
+  const handleGoogleSignIn=()=>{
+    const provider = new GoogleAuthProvider();
+    setSubmitButtonDisabled(true);
+
+    signInWithPopup(auth,provider)
+    .then(()=>{
+      setSubmitButtonDisabled(false);
+      navigate("/");
+    })
+    .catch((err)=>{
+      setSubmitButtonDisabled(false);
+      setErrorMsg(err.message);
+    });
+  };
+>>>>>>> d72e695a845a203ae5d10857e9776eb02f35a24a
   return (
     <div className="Login-container">
       <div className="Login-innerBox">
@@ -60,6 +81,19 @@ function Login() {
           <button disabled={submitButtonDisabled} onClick={handleSubmission}>
             Login
           </button>
+<<<<<<< HEAD
+=======
+          <div className="divider">
+           
+            <span>OR</span>
+            
+          </div>
+          <button 
+          disabled = {submitButtonDisabled}
+          onClick = {handleGoogleSignIn}
+          className="google-login-button"
+          >Continue with Google</button>
+>>>>>>> d72e695a845a203ae5d10857e9776eb02f35a24a
           <p>
             Don't have an account?{" "}
             <span>
