@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
@@ -7,12 +7,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase"
 import { signOut } from "firebase/auth";
 
+
 const MyNavbar = () => {
-
-  const navigate = useNavigate() 
-
-  const user = auth.currentUser
  
+
+  const navigate = useNavigate();
+  const user = auth.currentUser;
+
+ 
+
   const handleSignout = () => {
      signOut(auth)
      .then(() => {
@@ -42,7 +45,7 @@ const MyNavbar = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    );
+  );
 };
 
 export default MyNavbar;
