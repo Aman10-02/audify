@@ -4,10 +4,16 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import ReactAudioPlayer from "react-audio-player";
+<<<<<<< HEAD
 import { doc, getDoc, getFirestore } from "firebase/firestore"
 import { auth, app } from '../firebase';
 import moment from 'moment'
 import { Link } from 'react-router-dom';
+=======
+import { doc, getDoc, collection, getFirestore } from "firebase/firestore"
+import { auth, app } from '../firebase';
+
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
 
 
 
@@ -20,7 +26,11 @@ const BookCard = () => {
   }, []);
   
   const fetchData = async () => {
+<<<<<<< HEAD
       const docref = doc(db, "Files", user);
+=======
+      const docref = await doc(db, "Files", user );
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
       const dataref = await getDoc(docref);
       if(dataref.exists()){
         setAuds(dataref.data())
@@ -40,6 +50,7 @@ const BookCard = () => {
                 {/* <Card.Img variant="bottom" src="https://images.mubicdn.net/images/film/164456/cache-663434-1617639647/image-w1280.jpg?size=800x" /> */}
                 <Card.Body>
                   <ReactAudioPlayer src={auds[aud].url} controls />
+<<<<<<< HEAD
                   <Card.Title>Created on: {moment(auds[aud].createdOn).fromNow()}</Card.Title>
                   <Card.Title>Last modified: {moment(auds[aud].updatedOn).fromNow()} </Card.Title>
                   <Card.Title>Duration: {auds[aud].duration ? auds[aud].duration : ""} </Card.Title>
@@ -51,6 +62,13 @@ const BookCard = () => {
                   }  } >
                     <Button variant="info">View</Button>
                   </Link>
+=======
+                  <Card.Title>Created on: {auds[aud].createdOn}</Card.Title>
+                  <Card.Title>Last modified: {auds[aud].updatedOn} </Card.Title>
+                  <Card.Title>Duration:</Card.Title>
+                  <Card.Title>Comments:</Card.Title>
+                  {/* <Button variant="info">View</Button> */}
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
                 </Card.Body>
               </Card>
             </Col>

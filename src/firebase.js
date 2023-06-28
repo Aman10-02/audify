@@ -1,9 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { getStorage } from "firebase/storage";
 =======
 >>>>>>> d72e695a845a203ae5d10857e9776eb02f35a24a
+=======
+import { getStorage } from "firebase/storage";
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
 import { getAuth } from "firebase/auth"
 
 // Your web app's Firebase configuration

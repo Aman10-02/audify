@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "argparse": "^2.0.1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
@@ -25,5 +26,12 @@
     "srt-to-obj": "^0.0.3",
     "subtitles-parser": "^0.0.2",
     "util": "^0.12.5"
+=======
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase": "^9.22.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "nodemon": "^2.0.22"
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
   }
 }

@@ -29,9 +29,13 @@ function Home(props) {
            <h1>
               <button onClick={handleSignout}>Signout</button>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <Link to="/upload" >Upload</Link>
 =======
 >>>>>>> d72e695a845a203ae5d10857e9776eb02f35a24a
+=======
+              <Link to="/upload" >Upload</Link>
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
            </h1>
         }
     </div>
