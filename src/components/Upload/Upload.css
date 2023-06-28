@@ -1,3 +1,4 @@
+
 .Add {
     max-width: 400px;
     margin: 0 auto;
@@ -42,5 +43,91 @@
     padding: 8px;
     border-radius: 8px;
     cursor: pointer;
+  }
+
+  .view-page{
+     background-image: url('https://rb.gy/ol8lu');
+     background-size: cover;
+  }
+
+  .react-audio-player{
+      position: absolute;
+      top: 32%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: url('https://rb.gy/ol8lu');
+      background-size: cover;
+      border-radius: 20px;
+  }
+
+  .react-audio {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(167, 14, 93, 0.655);
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #333;
+    font-size: 16px;
+  }
+
+  .audio-player{
+  
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .audio-player-button{
+      position: absolute;
+      top: 65%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgb(238,174,202);
+      color: white;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .audio-player-button:hover {
+      background-color: #45a049;
+    }
+    
+
+  .caption{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    min-width: 200px;
+    min-height: 150px;
+    padding: 20px;
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background-blend-mode: normal;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly ;
+    box-shadow: 0 10px 25px rgb(0 0 0 / 5%),
+    0 20px 48px rgb(0 0 0 / 5%),
+    0 1px 4px rgb(0 0 0 / 10%);
+  }
+  .caption-textarea{
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+     outline: none !important;
+     border: none;
+     border-color: white;
+     resize: none;
   }
 
