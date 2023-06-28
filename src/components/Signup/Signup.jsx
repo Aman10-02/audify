@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+<<<<<<< HEAD
 import Swal from 'sweetalert2';
+=======
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
 
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
@@ -24,6 +27,7 @@ function Signup() {
       return;
     }
     setErrorMsg("");
+<<<<<<< HEAD
     
     if (values.pass.length < 8) {
       Swal.fire({
@@ -45,6 +49,8 @@ function Signup() {
       });
       return;
     }
+=======
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
 
     setSubmitButtonDisabled(true);
     createUserWithEmailAndPassword(auth, values.email, values.pass)
@@ -83,13 +89,20 @@ function Signup() {
         />
         <InputControl
           label="Password"
+<<<<<<< HEAD
           type="password"
+=======
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
           placeholder="Enter password"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, pass: event.target.value }))
           }
         />
+<<<<<<< HEAD
         <div className="divider"></div>
+=======
+
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
         <div className="Signup-footer">
           <b className="error">{errorMsg}</b>
           <button onClick={handleSubmission} disabled={submitButtonDisabled}>
@@ -107,4 +120,8 @@ function Signup() {
   );
 }
 
+<<<<<<< HEAD
 export default Signup;
+=======
+export default Signup;
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186

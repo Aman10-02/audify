@@ -2,6 +2,7 @@
     height: 100%;
     min-height: 100vh;
     width: 100%;
+<<<<<<< HEAD
     background: linear-gradient(to right, #9900ff, #cc80ff);  
     background-image: url('ogImage.jpg');
     display: flex;
@@ -22,21 +23,38 @@ h1.Login-heading:hover{
 .Login-footer button:hover {
   background-color: #aa2aff;
 }
+=======
+    background: linear-gradient(to right, #9900ff, #cc80ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
   .Login-innerBox {
     min-width: 480px;
     height: fit-content;
     width: fit-content;
+<<<<<<< HEAD
     background-color:black;
+=======
+    background-color: #fff;
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
     padding: 30px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+<<<<<<< HEAD
     gap: 20px;
     color: white;
     mix-blend-mode: hard-light; 
   }
  
+=======
+    gap: 30px;
+  }
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
   
   .Login-footer {
     display: flex;
@@ -66,7 +84,11 @@ h1.Login-heading:hover{
   }
   
   .Login-footer button:disabled {
+<<<<<<< HEAD
     background-color: white !important;
+=======
+    background-color: gray !important;
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
   }
   
   .Login-footer button:hover {
@@ -80,6 +102,7 @@ h1.Login-heading:hover{
   
   .Login-footer p span a {
     font-weight: bold;
+<<<<<<< HEAD
     color:white;
     letter-spacing: 1px;
     font-size: 1rem;
@@ -156,3 +179,10 @@ h1.Login-heading:hover{
   font-weight: 700;
   color:white;
 }
+=======
+    color: #9900ff;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186

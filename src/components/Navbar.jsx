@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import {useState} from 'react';
+=======
+import React from 'react';
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
@@ -7,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase"
 import { signOut } from "firebase/auth";
 
+<<<<<<< HEAD
 
 const MyNavbar = () => {
  
@@ -16,6 +21,14 @@ const MyNavbar = () => {
 
  
 
+=======
+const MyNavbar = () => {
+
+  const navigate = useNavigate() 
+
+  const user = auth.currentUser
+ 
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
   const handleSignout = () => {
      signOut(auth)
      .then(() => {
@@ -45,7 +58,14 @@ const MyNavbar = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+<<<<<<< HEAD
   );
 };
 
 export default MyNavbar;
+=======
+    );
+};
+
+export default MyNavbar;
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186

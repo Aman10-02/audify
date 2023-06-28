@@ -18,7 +18,10 @@ import './App.css';
 
 //Pages
 import HomePage from './pages/Home';
+<<<<<<< HEAD
 import View from "./components/View/View";
+=======
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -30,7 +33,11 @@ function App() {
         setUserName(user.displayName);
       } else setUserName("");
     });
+<<<<<<< HEAD
   });
+=======
+  }, []);
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
 
   return (
     <div className="App">
@@ -38,11 +45,15 @@ function App() {
     <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+<<<<<<< HEAD
           {userName && <>
           <Route path="/upload" element={<Upload />} />
           <Route path="/view" element={<View />} />
           </>}
 
+=======
+          <Route path="/upload" element={<Upload />} />
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
           <Route path="/" element={<HomePage userName={userName} />}></Route>
     </Routes>
     </div>

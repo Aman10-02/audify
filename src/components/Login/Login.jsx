@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import { signInWithEmailAndPassword,signInWithPopup,GoogleAuthProvider } from "firebase/auth";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+=======
+import { signInWithEmailAndPassword } from "firebase/auth";
+
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
 
@@ -35,6 +40,7 @@ function Login() {
         setErrorMsg(err.message);
       });
   };
+<<<<<<< HEAD
   const handleGoogleSignIn=()=>{
     const provider = new GoogleAuthProvider();
     setSubmitButtonDisabled(true);
@@ -49,6 +55,8 @@ function Login() {
       setErrorMsg(err.message);
     });
   };
+=======
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
   return (
     <div className="Login-container">
       <div className="Login-innerBox">
@@ -63,19 +71,26 @@ function Login() {
         />
         <InputControl
           label="Password"
+<<<<<<< HEAD
           type={"password"} //show
+=======
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
           onChange={(event) =>
             setValues((prev) => ({ ...prev, pass: event.target.value }))
           }
           placeholder="Enter Password"
         />
+<<<<<<< HEAD
         
+=======
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
 
         <div className="Login-footer">
           <b className="error">{errorMsg}</b>
           <button disabled={submitButtonDisabled} onClick={handleSubmission}>
             Login
           </button>
+<<<<<<< HEAD
           <div className="divider">
            
             <span>OR</span>
@@ -86,6 +101,8 @@ function Login() {
           onClick = {handleGoogleSignIn}
           className="google-login-button"
           >Continue with Google</button>
+=======
+>>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
           <p>
             Don't have an account?{" "}
             <span>
