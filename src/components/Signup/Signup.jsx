@@ -35,6 +35,17 @@ function Signup() {
       return;
     }
 
+    const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+    if (!emailRegex.test(values.email)) {
+      Swal.fire({
+        title: "Email Error",
+        text: "Please enter a valid email address",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
     setSubmitButtonDisabled(true);
     createUserWithEmailAndPassword(auth, values.email, values.pass)
       .then(async (res) => {
@@ -71,13 +82,14 @@ function Signup() {
           }
         />
         <InputControl
-          label="Password" type='password'
+          label="Password"
+          type="password"
           placeholder="Enter password"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, pass: event.target.value }))
           }
         />
-<div className="divider"></div>
+        <div className="divider"></div>
         <div className="Signup-footer">
           <b className="error">{errorMsg}</b>
           <button onClick={handleSubmission} disabled={submitButtonDisabled}>
