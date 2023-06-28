@@ -4,8 +4,6 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom'
 import { app,auth } from '../firebase';
 import Swal from 'sweetalert2';
-import { RiFileAddLine } from 'react-icons/ri';
-import { IconName } from "react-icons/gr";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile } from '@fortawesome/free-solid-svg-icons';
 import './Home.css'
