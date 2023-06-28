@@ -6,6 +6,9 @@ import { doc, getDoc, getFirestore, updateDoc } from 'firebase/firestore';
 import { app } from '../../firebase';
 import { getAuth } from 'firebase/auth';
 
+import '../Upload/Upload.css'
+
+
 
 function View() {
     let { state } = useLocation();
@@ -51,11 +54,13 @@ function View() {
     }, []);
     return (
         <>
+            <div className='react-audio-player'>
+               <ReactAudioPlayer id='toChange' className='react-audio' src={state.url} controls />
+            </div>
+            <div>{currentTime}</div>
             {captions &&
             <AudioPlayer captions={captions} currentTime={currentTime} updateCaptions={updateCaptions} />}
             {/* <div className="caption">"this is caption" {console.log(currentCaption)}</div> */}
-            <ReactAudioPlayer id='toChange' src={state.url} controls />
-            <div>{currentTime}</div>
             
         </>
     )

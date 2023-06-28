@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import './Upload/Upload.css'
+
 const AudioPlayer = ({ captions, currentTime, updateCaptions }) => {
   
   const [editedCaptions, setEditedCaptions] = useState(captions); // State to hold the edited captions
@@ -33,11 +35,13 @@ const AudioPlayer = ({ captions, currentTime, updateCaptions }) => {
   return (
     <div className="audio-player">
       {currentCaption && (
-        <div className="caption">
-          <textarea value={currentCaption.text} disabled = {!isEditing} onChange={handleCaptionChange} />
-        </div>
+        <section>
+           <div className="caption">
+            <textarea className="caption-textarea" value={currentCaption.text} disabled = {!isEditing} onChange={handleCaptionChange} />
+           </div>
+          {<button className='audio-player-button' onClick={handleEdit} > {isEditing ? "save" : "edit"} </button>}
+        </section>
       )}
-      <button onClick={handleEdit} > {isEditing ? "save" : "edit"} </button>
     </div>
   );
 };
