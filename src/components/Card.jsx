@@ -46,7 +46,7 @@ const BookCard = () => {
                   <Card.Title>Created on: {moment(auds[aud].createdOn).fromNow()}</Card.Title>
                   <Card.Title>Last modified: {moment(auds[aud].updatedOn).fromNow()} </Card.Title>
                   <Card.Title>Duration: {auds[aud].duration ? auds[aud].duration : ""} </Card.Title>
-                  <Card.Title>Comments: {auds[aud].srtUrl ? "Available" : "Unavailable"} </Card.Title>
+                  {/* <Card.Title>Comments: {auds[aud].srtUrl ? "Available" : "Unavailable"} </Card.Title> */}
                   <Link to="/view" state={ {
                     fileName: aud,
                     captions: auds[aud].captions ? auds[aud].captions : "",
