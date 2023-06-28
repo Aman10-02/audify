@@ -179,8 +179,4 @@ background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1)
     );
 };
 
-<<<<<<< HEAD
 export default HomePage;
-=======
-export default HomePage;
->>>>>>> 3e8c79870f3af177065ae680ecf69409d2cbd186
