@@ -147,7 +147,9 @@ const HomePage = ({ userName }) => {
         },
       }).then( (result) => {
         console.log( "after . then", result)
-        Swal.fire("Sucessfully Done","",'success').then( () => window.location.reload())
+        if(result.isConfirmed){
+          Swal.fire("Sucessfully Done","",'success').then( () => window.location.reload())
+        }
         // window.location.reload(); // Refresh the page
       } ).catch((error) => {
         console.log( "after . catch", error)

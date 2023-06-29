@@ -4,11 +4,12 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import ReactAudioPlayer from "react-audio-player";
-import { doc, getDoc, getFirestore, deleteDoc } from "firebase/firestore"
+import { doc, getDoc, getFirestore, deleteDoc, updateDoc, deleteField } from "firebase/firestore"
 import { auth, app } from '../firebase';
 import moment from 'moment'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { deleteObject, getStorage, ref } from 'firebase/storage';
 
 const BookCard = () => {
   const [auds, setAuds] = useState({});
@@ -31,7 +32,7 @@ const BookCard = () => {
   });
 
   const handleDelete = async (fileName) => {
-    const confirmDelete = await Swal.fire({
+      await Swal.fire({
       title: 'Delete File',
       text: 'Are you sure you want to delete this file?',
       icon: 'warning',
@@ -40,18 +41,30 @@ const BookCard = () => {
       cancelButtonColor: '#3085d6',
       confirmButtonText: 'Delete',
       cancelButtonText: 'Cancel',
-    });
-
-    if (confirmDelete.isConfirmed) {
-      try {
-        const docRef = doc(db, 'Files', user);
-        await deleteDoc(docRef, fileName);
-        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
-        fetchData();
-      } catch (error) {
-        Swal.fire('Error', 'An error occurred while deleting the file.', 'error');
+      showLoaderOnConfirm: true,
+      preConfirm: async() => {
+        try {
+          const cancleBtn = Swal.getCancelButton()
+          cancleBtn.style.display = "none"
+          const docRef = doc(db, 'Files', user);
+          const storage = getStorage();
+          const audRef = ref(storage, auds[fileName].url )
+          console.log(auds[fileName].url)
+          await deleteObject(audRef).then( async () => {
+            await updateDoc(docRef, {
+              [fileName]: deleteField()
+            });
+            // await deleteDoc(docRef, fileName);
+            Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
+            .then(()=>window.location.reload());
+          } )
+          
+          // fetchData();
+        } catch (error) {
+          Swal.fire('Error', 'An error occurred while deleting the file.', 'error');
+        }
       }
-    }
+    });
   };
 
   return (
