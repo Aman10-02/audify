@@ -28,7 +28,10 @@ function Home(props) {
            user && 
            <h1>
               <button onClick={handleSignout}>Signout</button>
+<<<<<<< HEAD
               <Link to="/upload" >Upload</Link>
+=======
+>>>>>>> d72e695a845a203ae5d10857e9776eb02f35a24a
            </h1>
         }
     </div>
