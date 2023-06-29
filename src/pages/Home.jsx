@@ -187,7 +187,7 @@ const HomePage = ({ userName }) => {
   justifyContent: 'center',
   padding: '10px',
   background: 'black',
-  width: '60px',
+  width: 'px',
   height:'40px',
   // backgroundBlendMode: 'normal',
   // background: 'rgb(238,174,202)',
