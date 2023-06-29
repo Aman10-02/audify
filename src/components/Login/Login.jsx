@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword,signInWithPopup,GoogleAuthProvider } from "firebase/auth";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+// import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
 

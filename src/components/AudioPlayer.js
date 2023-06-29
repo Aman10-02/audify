@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import './Upload/Upload.css'
 
 const AudioPlayer = ({ captions, currentTime, updateCaptions }) => {
   
@@ -22,23 +24,37 @@ const AudioPlayer = ({ captions, currentTime, updateCaptions }) => {
   };
   const handleEdit = async () => {
     if(isEditing){ //save btn clicked
-      const confirmSave = window.confirm('Are you sure you want to change the caption?');
-      if (confirmSave) {
-        await updateCaptions(editedCaptions);
-      }
-    }
+        await Swal.fire({
+        title: 'Save Changes',
+        text: 'Are you sure you want to change the caption?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Save',
+        cancelButtonText: 'Cancel',
+        showLoaderOnConfirm: true,
+        preConfirm: async() => {
+          try {
+            const cancleBtn = Swal.getCancelButton()
+            cancleBtn.style.display = "none"
+            await updateCaptions(editedCaptions);         
+          } catch (error) {
+            Swal.fire('Error', 'An error occurred while saving the changes.', 'error');
+          }
+        }
+      });
+    };
     setIsEditing(!isEditing)
   };
 
   return (
-    <div className="audio-player">
-      {currentCaption && (
-        <div className="caption">
-          <textarea value={currentCaption.text} disabled = {!isEditing} onChange={handleCaptionChange} />
-        </div>
-      )}
-      <button onClick={handleEdit} > {isEditing ? "save" : "edit"} </button>
-    </div>
+    <>
+      <div className="caption">
+        <textarea className="caption-textarea" value={currentCaption ? currentCaption.text : ""} disabled = {!isEditing} onChange={handleCaptionChange} />
+      </div>
+      <button className='audio-player-button' onClick={handleEdit} > {isEditing ? "save" : "edit"} </button>
+    </>
   );
 };
 
