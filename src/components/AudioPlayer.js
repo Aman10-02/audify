@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import Swal from 'sweetalert2';
 import './Upload/Upload.css'
 
 const AudioPlayer = ({ captions, currentTime, updateCaptions }) => {
@@ -24,7 +24,7 @@ const AudioPlayer = ({ captions, currentTime, updateCaptions }) => {
   };
   const handleEdit = async () => {
     if(isEditing){ //save btn clicked
-      const confirmSave = window.confirm('Are you sure you want to change the caption?');
+      const confirmSave = Swal.fire('Are you sure you want to change the caption?');
       if (confirmSave) {
         await updateCaptions(editedCaptions);
       }
@@ -33,16 +33,12 @@ const AudioPlayer = ({ captions, currentTime, updateCaptions }) => {
   };
 
   return (
-    <div className="audio-player">
-      {currentCaption && (
-        <section>
-           <div className="caption">
-            <textarea className="caption-textarea" value={currentCaption.text} disabled = {!isEditing} onChange={handleCaptionChange} />
-           </div>
-          {<button className='audio-player-button' onClick={handleEdit} > {isEditing ? "save" : "edit"} </button>}
-        </section>
-      )}
-    </div>
+    <>
+      <div className="caption">
+        <textarea className="caption-textarea" value={currentCaption ? currentCaption.text : ""} disabled = {!isEditing} onChange={handleCaptionChange} />
+      </div>
+      <button className='audio-player-button' onClick={handleEdit} > {isEditing ? "save" : "edit"} </button>
+    </>
   );
 };
 

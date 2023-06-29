@@ -85,7 +85,7 @@ const BookCard = () => {
                 }}>
                   <Button variant="info">View</Button>
                 </Link>
-                <Button variant="danger" onClick={() => handleDelete(aud)}>Delete</Button>
+                <Button style={{marginLeft: "0.5rem" }} variant="danger" onClick={() => handleDelete(aud)}>Delete</Button>
               </Card.Body>
             </Card>
           </Col>

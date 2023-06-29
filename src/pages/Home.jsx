@@ -175,7 +175,22 @@ const HomePage = ({ userName }) => {
         <h1 style={{ color: 'aquamarine', textTransform: "capitalize" }}>Hey {userName ? userName : "User"},</h1>
         <hr style={{ background: "aquamarine", height: "3px", border: "none" }} />
         <h3 style={{ color: 'aquamarine' }}  > {userName ? "Please Find Your Recent Audios Here :" : "Your Audios Will Appear Here"}</h3>
-        {userName && <BookCard />}
+        {userName ? <BookCard /> : <div style={{ color: '#BFF7F7' , fontSize:'1.5rem',fontWeight:'600' }}>
+       {/* <b> Instructions:</b> <br></br>
+       <br></br> */}
+<br></br>
+If you're a new user, click on the "Sign Up" button to create your account. Alternatively, if you have a Google account, simply choose the "Login with Google" option for quick access.
+<br></br>
+<br></br>
+You'll find the "File" button located at the bottom right corner of the screen. Click on it to upload your video file. Please be patient during the upload process.
+<br></br>
+<br></br>
+
+Congratulations! You can now view your video's captions, which will be displayed on the screen. Take your time to review and enjoy the generated captions synced with the video content.
+
+<br></br>
+<br></br>
+</div>}
       </div>
       {/* onClick={ () => { user ? navigate('/upload') : alert('Login First')  }} */}
       <Button
@@ -189,7 +204,7 @@ const HomePage = ({ userName }) => {
   justifyContent: 'center',
   padding: '10px',
   background: 'black',
-  width: 'px',
+  width: '60px',
   height:'40px',
   // backgroundBlendMode: 'normal',
   // background: 'rgb(238,174,202)',
