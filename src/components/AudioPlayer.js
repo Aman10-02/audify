@@ -24,11 +24,27 @@ const AudioPlayer = ({ captions, currentTime, updateCaptions }) => {
   };
   const handleEdit = async () => {
     if(isEditing){ //save btn clicked
-      const confirmSave = Swal.fire('Are you sure you want to change the caption?');
-      if (confirmSave) {
-        await updateCaptions(editedCaptions);
-      }
-    }
+        await Swal.fire({
+        title: 'Save Changes',
+        text: 'Are you sure you want to change the caption?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Save',
+        cancelButtonText: 'Cancel',
+        showLoaderOnConfirm: true,
+        preConfirm: async() => {
+          try {
+            const cancleBtn = Swal.getCancelButton()
+            cancleBtn.style.display = "none"
+            await updateCaptions(editedCaptions);         
+          } catch (error) {
+            Swal.fire('Error', 'An error occurred while saving the changes.', 'error');
+          }
+        }
+      });
+    };
     setIsEditing(!isEditing)
   };
 
