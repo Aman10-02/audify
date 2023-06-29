@@ -186,7 +186,7 @@ You'll find the "File" button located at the bottom right corner of the screen. 
 <br></br>
 <br></br>
 
-Congratulations! You can now view your video's captions, which will be displayed on the screen. Take your time to review and enjoy the generated captions synced with the video content.
+Congratulations! Your audio is extracted and you can now view your video's captions on the screen. Take your time to review and enjoy the generated captions synced with the audio.
 
 <br></br>
 <br></br>
