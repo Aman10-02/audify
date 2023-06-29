@@ -1,0 +1,135 @@
+.Signup-container {
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(to right, #9900ff, #cc80ff);  
+  background-image: url('ogImage.jpg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+h1.Signup-heading:hover{
+  color: #aa2aff;
+}
+.InputControl-container input {
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+  outline: none;
+  padding: 10px 15px;
+  color: black;
+}
+
+.Signup-footer button:hover {
+background-color: #aa2aff;
+}
+.Signup-innerBox {
+  min-width: 480px;
+  height: fit-content;
+  width: fit-content;
+  background-color:black;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: white;
+  mix-blend-mode: hard-light; 
+}
+
+
+.Signup-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Signup-footer .error {
+  font-weight: bold;
+  font-size: 0.875rem;
+  color: #ff3300;
+  text-align: center;
+}
+
+.Signup-footer button {
+  outline: none;
+  border: none;
+  background-color: #9900ff;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 16px;
+  width: 100%;
+  transition: 100ms;
+  cursor: pointer;
+}
+
+.Signup-footer button:disabled {
+  background-color: white !important;
+}
+
+.Signup-footer button:hover {
+  background-color: #aa2aff;
+}
+
+.Signup-footer p {
+  font-weight: 700;
+  color: #000;
+}
+
+.InputControl-container label {
+font-weight: 700;
+font-size: 1rem;
+color: white;
+}
+
+.Signup-footer button {
+outline: none;
+border: none;
+background-color:white;
+color:black;
+border-radius: 5px;
+font-weight: bold;
+font-size: 1rem;
+padding: 10px 16px;
+width: 100%;
+transition: 100ms;
+cursor: pointer;
+}
+
+/* Add these styles in your Signup.css file */
+
+
+.Signup-footer p {
+  font-weight: 700;
+  color:white;
+}
+
+.Signup-footer p span a {
+  font-weight: bold;
+  color: #9900ff;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.Signup-footer p span a:hover{
+  color: #9900ff;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 10px 0;
+
+}
+.divider::before,
+.divider::after{
+content: "";
+flex-grow: 1;
+height: 1px;
+background-color: white;
+
+
+}
