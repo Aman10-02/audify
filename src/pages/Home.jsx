@@ -177,30 +177,48 @@ const HomePage = ({ userName }) => {
       </div>
       {/* onClick={ () => { user ? navigate('/upload') : alert('Login First')  }} */}
       <Button
-        className='bntt'
+      style={{
+  position: 'fixed',
+  bottom: '10px',
+  right: '10px',
+  zIndex: '9999',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '10px',
+  background: 'black',
+  width: '60px',
+  height:'40px',
+  // backgroundBlendMode: 'normal',
+  // background: 'rgb(238,174,202)',
+  // background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)',
+
+}}
+        className='btn'
         variant="success"
         onClick={handleAddClick}
-        style={{
-          position: 'fixed',
-          bottom: '10px',
-          right: '10px',
-          zIndex: '9999',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '10px',
-          width: '50px',
-          height: '50px',
-          background: 'black',
-          backgroundBlendMode: 'normal',
-          background: 'rgb(238,174,202)',
-          background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)',
-
-        }}>
-        <FontAwesomeIcon icon={faFile} className="fa-regular fa-file fa-beat-fade fa-lg" style={{ color: '010213' }} />
+       >
+        <FontAwesomeIcon icon={faFile} className="fa-regular fa-file fa-beat-fade fa-lg" style={{ color: 'white' }} />
       </Button>
     </div>
   );
 };
 
 export default HomePage;
+// style={{
+//   position: 'fixed',
+//   bottom: '10px',
+//   right: '10px',
+//   zIndex: '9999',
+//   display: 'flex',
+//   alignItems: 'center',
+//   justifyContent: 'center',
+//   padding: '10px',
+//   width: '50px',
+//   height: '50px',
+//   background: 'black',
+//   backgroundBlendMode: 'normal',
+//   background: 'rgb(238,174,202)',
+//   background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)',
+
+// }}

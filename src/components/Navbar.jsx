@@ -55,7 +55,7 @@ const MyNavbar = () => {
           </>
           :
           <>
-            <Button variant="primary" style={{color: 'white', backgroundColor:'black'}} onClick={handleSignout} >Sign Out</Button>{' '}
+            <Button variant="danger" style={{color: 'white', backgroundColor:'black'}} onClick={handleSignout} >Sign Out</Button>{' '}
           </>
           }
         </Navbar.Collapse>

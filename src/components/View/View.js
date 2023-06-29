@@ -58,7 +58,7 @@ function View() {
             <div className='react-audio-player'>
                <ReactAudioPlayer id='toChange' className='react-audio' src={state.url} controls />
             </div>
-            <div>{currentTime}</div>
+         
             {captions &&
                       <AudioPlayer captions={captions} currentTime={currentTime} updateCaptions={updateCaptions} />}
             {/* <div className="caption">"this is caption" {console.log(currentCaption)}</div> */}
