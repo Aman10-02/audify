@@ -33,16 +33,12 @@ const AudioPlayer = ({ captions, currentTime, updateCaptions }) => {
   };
 
   return (
-    <div className="audio-player">
-      {/* {currentCaption && ( */}
-        <section>
-           <div className="caption">
-            <textarea className="caption-textarea" value={currentCaption ? currentCaption.text : ""} disabled = {!isEditing} onChange={handleCaptionChange} />
-           </div>
-          {<button className='audio-player-button' onClick={handleEdit} > {isEditing ? "save" : "edit"} </button>}
-        </section>
-      {/* )} */}
-    </div>
+    <>
+      <div className="caption">
+        <textarea className="caption-textarea" value={currentCaption ? currentCaption.text : ""} disabled = {!isEditing} onChange={handleCaptionChange} />
+      </div>
+      <button className='audio-player-button' onClick={handleEdit} > {isEditing ? "save" : "edit"} </button>
+    </>
   );
 };
 
