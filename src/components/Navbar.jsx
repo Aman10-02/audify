@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase"
 import { signOut } from "firebase/auth";
-import './Navbar.css';
+
 import logo from "./audify-low-resolution-logo-color-on-transparent-background.png";
 
 const MyNavbar = () => {
@@ -51,11 +51,11 @@ const MyNavbar = () => {
           {
           !user ?
           <>
-            <Button variant="primary" className='glow-on-hover' onClick={() => {navigate('/signup')}} >Sign In</Button>{' '}
+            <Button variant="primary" style={{color: 'white', backgroundColor:'black'}} onClick={() => {navigate('/signup')}} >Sign In</Button>{' '}
           </>
           :
           <>
-            <Button variant="primary" className='glow-on-hover' onClick={handleSignout} >Sign Out</Button>{' '}
+            <Button variant="danger" style={{color: 'white', backgroundColor:'black'}} onClick={handleSignout} >Sign Out</Button>{' '}
           </>
           }
         </Navbar.Collapse>

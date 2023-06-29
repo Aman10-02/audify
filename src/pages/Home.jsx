@@ -187,16 +187,18 @@ const HomePage = ({ userName }) => {
   justifyContent: 'center',
   padding: '10px',
   background: 'black',
-  backgroundBlendMode: 'normal',
-  background: 'rgb(238,174,202)',
-  background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)',
+  width: '60px',
+  height:'40px',
+  // backgroundBlendMode: 'normal',
+  // background: 'rgb(238,174,202)',
+  // background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)',
 
 }}
-        className='glow-on-hover'
+        className='btn'
         variant="success"
         onClick={handleAddClick}
        >
-        <FontAwesomeIcon icon={faFile} className="fa-regular fa-file fa-beat-fade fa-lg" style={{ color: 'ehite' }} />
+        <FontAwesomeIcon icon={faFile} className="fa-regular fa-file fa-beat-fade fa-lg" style={{ color: 'white' }} />
       </Button>
     </div>
   );
