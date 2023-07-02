@@ -7,6 +7,7 @@ import { app } from '../../firebase';
 import { getAuth } from 'firebase/auth';
 
 import '../Upload/Upload.css'
+import Comments from '../Comments';
 
 
 // import './View.css';
@@ -15,6 +16,7 @@ function View() {
     let { state } = useLocation();
     const [currentTime, setCurrentTime] = useState();
     const [captions, setCaptions] = useState();
+    const [comments, setComments] = useState([]);
     const [aud, setAud] = useState();
     const db = getFirestore(app);
     const auth = getAuth();
@@ -30,6 +32,28 @@ function View() {
         })
         setCaptions(captions);
     };
+    const updateComments = async (comments) => {
+        await updateDoc(docref, {
+                [state.fileName] : {
+                    ...aud,
+                    comments : comments,
+                    updatedOn: Date()
+                }
+        })
+        setComments(comments);
+    };
+    const seekToTimestamp = (timestamp) => {
+        const audio = document.getElementById("toChange");
+        audio.currentTime = convertTimestampToSeconds(timestamp);
+        audio.play();
+      };
+    
+      const convertTimestampToSeconds = (timestamp) => {
+        // Implement the conversion logic based on the timestamp format you're using
+        // Example: "00:01:30" => 90 seconds
+        const [hours, minutes, seconds] = timestamp.split(':');
+        return parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseInt(seconds);
+      };
     useEffect(() => {
         const fetchData = async () => {
             const dataref = await getDoc(docref);
@@ -37,6 +61,7 @@ function View() {
             console.log(auds[state.fileName])
             setAud(auds[state.fileName])
             setCaptions(auds[state.fileName].captions)
+            setComments(auds[state.fileName].comments)
         };
         fetchData();
         // Update the current time based on the video player's time        
@@ -62,7 +87,7 @@ function View() {
             {captions &&
                       <AudioPlayer captions={captions} currentTime={currentTime} updateCaptions={updateCaptions} />}
             {/* <div className="caption">"this is caption" {console.log(currentCaption)}</div> */}
-            
+            <Comments currentTime={currentTime} updateComments={updateComments} comments={comments} seekToTimestamp={seekToTimestamp} />
         </div>
     )
 }
