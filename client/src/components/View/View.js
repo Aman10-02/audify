@@ -32,14 +32,19 @@ function View() {
     setCaptions(captions);
   };
   const updateComments = async (comments) => {
-    await updateDoc(docref, {
-      [state.fileName]: {
-        ...aud,
-        comments: comments,
-        updatedOn: Date(),
-      },
-    });
-    setComments(comments);
+    try {
+        
+        await updateDoc(docref, {
+            [state.fileName]: {
+                ...aud,
+                comments: comments,
+                updatedOn: Date(),
+            },
+        });
+        setComments(comments);
+    } catch (error) {
+        throw(error);
+    }
   };
   const seekToTimestamp = (timestamp) => {
     const audio = document.getElementById("toChange");
@@ -98,15 +103,15 @@ function View() {
           )}
         </div>
         <div className="cont">
-          <div className="cmnts">
+          {/* <div > */}
             <Comments
               updateComments={updateComments}
               currentTime={currentTime}
               comments={comments}
               seekToTimestamp={seekToTimestamp}
             />
-          </div>
-          <button className="add-comments-button">Add Comments</button>
+          {/* </div> */}
+          {/* <button className="add-comments-button">Add Comments</button> */}
         </div>
       </div>
     </div>

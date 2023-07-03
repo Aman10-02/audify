@@ -5,7 +5,6 @@ import Signup from "./components/Signup/Signup";
 import { auth } from "./firebase";
 
 import "./App.css";
-import Upload from "./components/Upload/Upload";
 import { Routes, Route } from 'react-router-dom';
 
 //Components
@@ -33,17 +32,18 @@ function App() {
 
   return (
     <div className="App">
-    <MyNavbar userName = {userName} />
-    <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          {userName && <>
-          <Route path="/upload" element={<Upload />} />
-          <Route path="/view" element={<View />} />
-          </>}
+      <MyNavbar />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        {userName &&
+          <>
+            <Route path="/view" element={<View />} />
+          </>
+        }
 
-          <Route path="/" element={<HomePage userName={userName} />}></Route>
-    </Routes>
+        <Route path="/" element={<HomePage />}></Route>
+      </Routes>
     </div>
   );
 }
