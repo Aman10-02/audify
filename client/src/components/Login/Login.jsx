@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-import { signInWithEmailAndPassword } from "firebase/auth";
-=======
 import { signInWithEmailAndPassword,signInWithPopup,GoogleAuthProvider } from "firebase/auth";
->>>>>>> d72e695a845a203ae5d10857e9776eb02f35a24a
-
+// import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import InputControl from "../InputControl/InputControl";
 import { auth } from "../../firebase";
 
@@ -39,8 +35,6 @@ function Login() {
         setErrorMsg(err.message);
       });
   };
-<<<<<<< HEAD
-=======
   const handleGoogleSignIn=()=>{
     const provider = new GoogleAuthProvider();
     setSubmitButtonDisabled(true);
@@ -55,7 +49,6 @@ function Login() {
       setErrorMsg(err.message);
     });
   };
->>>>>>> d72e695a845a203ae5d10857e9776eb02f35a24a
   return (
     <div className="Login-container">
       <div className="Login-innerBox">
@@ -70,19 +63,19 @@ function Login() {
         />
         <InputControl
           label="Password"
+          type={"password"} //show
           onChange={(event) =>
             setValues((prev) => ({ ...prev, pass: event.target.value }))
           }
           placeholder="Enter Password"
         />
+        
 
         <div className="Login-footer">
           <b className="error">{errorMsg}</b>
           <button disabled={submitButtonDisabled} onClick={handleSubmission}>
             Login
           </button>
-<<<<<<< HEAD
-=======
           <div className="divider">
            
             <span>OR</span>
@@ -93,7 +86,6 @@ function Login() {
           onClick = {handleGoogleSignIn}
           className="google-login-button"
           >Continue with Google</button>
->>>>>>> d72e695a845a203ae5d10857e9776eb02f35a24a
           <p>
             Don't have an account?{" "}
             <span>

@@ -15,11 +15,11 @@ const getText = () => {
 
         outdata.on("close", code => {
             console.log(`child process exited with code ${code}`);
-            if(code === 0){
+            // if(code === 0){
                 resolve("success");
-            }else{
-                reject("error");
-            }
+            // }else{
+            //     reject("error");
+            // }
         });
     });
 }
