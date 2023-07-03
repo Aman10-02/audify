@@ -61,6 +61,7 @@
   margin-bottom: 10px;
   font-size: 14px;
   
+
 }
 
 .cmnts::-webkit-scrollbar {
@@ -80,6 +81,7 @@
 .cmnts::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.1); /* Set the background color of the scrollbar track */
 }
+
 
   
 
