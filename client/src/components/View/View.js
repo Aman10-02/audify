@@ -104,7 +104,6 @@ function View() {
               currentTime={currentTime}
               comments={comments}
               seekToTimestamp={seekToTimestamp}
-              showAddCommentButton={false}
             />
           </div>
           <button className="add-comments-button">Add Comments</button>
