@@ -107,9 +107,7 @@ function View() {
               showAddCommentButton={false}
             />
           </div>
-          <button className="add-comments-button" onClick={updateComments}>
-            Add Comments
-          </button>
+          <button className="add-comments-button">Add Comments</button>
         </div>
       </div>
     </div>
