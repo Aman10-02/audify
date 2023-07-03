@@ -81,7 +81,7 @@ function View() {
       // Clean up the event listener
       audioElement.removeEventListener("timeupdate", handleTimeUpdate);
     };
-  }, []);
+  }, [aud,comments,captions]);
   return (
     <div className="view-page-con">
       <div className="react-audio-player">
