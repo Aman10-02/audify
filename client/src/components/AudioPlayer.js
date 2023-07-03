@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Swal from "sweetalert2";
 import "./Upload/Upload.css";
 
 const AudioPlayer = ({ captions, currentTime, updateCaptions }) => {
   const [editedCaptions, setEditedCaptions] = useState(captions); // State to hold the edited captions
   const [isEditing, setIsEditing] = useState(false);
+  const audioRef = useRef(null);
+  const isSavingRef = useRef(false);
+
+  useEffect(() => {
+    if (!isEditing && !isSavingRef.current && audioRef.current) {
+      audioRef.current.play();
+    }
+  }, [isEditing]);
 
   // Filter captions based on current time
   const currentCaption = editedCaptions.find(
@@ -26,7 +34,6 @@ const AudioPlayer = ({ captions, currentTime, updateCaptions }) => {
   };
   const handleEdit = async () => {
     if (isEditing) {
-      //save btn clicked
       await Swal.fire({
         title: "Save Changes",
         text: "Are you sure you want to change the caption?",
@@ -39,8 +46,9 @@ const AudioPlayer = ({ captions, currentTime, updateCaptions }) => {
         showLoaderOnConfirm: true,
         preConfirm: async () => {
           try {
-            const cancleBtn = Swal.getCancelButton();
-            cancleBtn.style.display = "none";
+            const cancelButton = Swal.getCancelButton();
+            cancelButton.style.display = "none";
+            isSavingRef.current = true;
             await updateCaptions(editedCaptions);
           } catch (error) {
             Swal.fire(
@@ -48,11 +56,16 @@ const AudioPlayer = ({ captions, currentTime, updateCaptions }) => {
               "An error occurred while saving the changes.",
               "error"
             );
+          } finally {
+            isSavingRef.current = false;
+            setIsEditing(false);
           }
         },
       });
+    } else {
+      setIsEditing(true);
+      audioRef.current.pause();
     }
-    setIsEditing(!isEditing);
   };
 
   return (
