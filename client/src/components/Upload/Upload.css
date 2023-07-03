@@ -113,7 +113,7 @@
 }
 
 .audio-player-button:hover {
-  background-color: #45a049;
+  background-color: rgb(166, 198, 233); 
 }
 
 .caption {

@@ -32,7 +32,7 @@ const MyNavbar = () => {
       zIndex: '100000',
       }}>
       <Container>
-        <Navbar.Brand style={{color: 'hotpink'}} onClick={() => navigate("/")}>
+        <Navbar.Brand style={{color: 'hotpink',cursor:'pointer'}} onClick={() => navigate("/")}>
         <img
             src={logo}
             alt="Audify Logo"
@@ -40,6 +40,7 @@ const MyNavbar = () => {
               width: "180px",
               height: "40px",
               marginRight: "10px",
+            
             }}
           />
         </Navbar.Brand>
@@ -51,11 +52,11 @@ const MyNavbar = () => {
           {
           !user ?
           <>
-            <Button variant="primary" style={{color: 'white', backgroundColor:'black'}} onClick={() => {navigate('/signup')}} >Sign In</Button>{' '}
+            <Button variant="primary" style={{color: 'white', backgroundColor:'black'}} onClick={() => {navigate('/login')}} >Log In</Button>{' '}
           </>
           :
           <>
-            <Button variant="danger" style={{color: 'white', backgroundColor:'black'}} onClick={handleSignout} >Sign Out</Button>{' '}
+            <Button variant="danger" style={{color: 'white', backgroundColor:'black'}} onClick={handleSignout} >Log Out</Button>{' '}
           </>
           }
         </Navbar.Collapse>

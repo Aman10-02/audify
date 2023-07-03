@@ -1,0 +1,114 @@
+.capt{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 30px;
+  margin-left: 180px;
+}
+
+.use{
+  display:flex;
+  margin-left: 150px;
+
+}
+
+.add-comments-button{
+  background-color: rgb(238, 174, 202);
+  color: black;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  gap: 30px;
+  width: 200px;
+
+}
+
+.add-comments-button:hover{
+  background-color: rgb(166, 198, 233); 
+}
+
+.cont{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cmnts {
+  margin: 2rem 0;
+  overflow: auto;
+  height: 200px;
+  width: 300px;
+  padding: 20px;
+  background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+  background-blend-mode: normal;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  /* align-items: center; */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 20px 48px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment {
+  /* position: absolute; */
+  background-color: #dbe5f6;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  
+  box-shadow: 0 10px 25px rgb(0 0 0 / 5%), 0 20px 48px rgb(0 0 0 / 5%), 0 1px 4px rgb(0 0 0 / 5%);
+  /* border: solid 1px; */
+}
+.comment p{
+  margin: 0px;
+}
+.delete-btn{
+  display: none;
+  /* position: relative ; */
+  top: 0px;
+  right: 0px;
+  
+}
+.delete-btn:hover{
+  cursor: pointer;
+  color: red;
+}
+
+.comment:hover{
+  .delete-btn{
+    display: block;
+  }
+}
+.cmnts::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+
+}
+
+.cmnts::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3); /* Set the color of the scrollbar thumb */
+  border-radius: 10px; /* Round the corners of the scrollbar thumb */
+}
+
+.cmnts::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Set the color of the scrollbar thumb on hover */
+}
+
+.cmnts::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.2); /* Set the background color of the scrollbar track */
+  border-radius: 5px;
+  margin: 5px;
+}
+
+
+  
+
+  
