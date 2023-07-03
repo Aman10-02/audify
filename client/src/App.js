@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div className="App">
-    <MyNavbar userName = {userName} />
+    <MyNavbar />
     <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
@@ -42,7 +42,7 @@ function App() {
           <Route path="/view" element={<View />} />
           </>}
 
-          <Route path="/" element={<HomePage userName={userName} />}></Route>
+          <Route path="/" element={<HomePage />}></Route>
     </Routes>
     </div>
   );

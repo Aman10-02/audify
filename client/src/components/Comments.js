@@ -1,106 +1,84 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Swal from 'sweetalert2';
 import './Upload/Upload.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 const Comments = ({ currentTime, updateComments, comments, seekToTimestamp }) => {
-    // const [comments, setComments] = useState();
-    const [adding, setAdding] = useState(false);
-    const [timestamp, setTimeStamp] =  useState();
-    const [text, setText] =  useState();
-    // const text = document.getElementById('commentInput').value;
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        if (timestamp && text) {
-            const newComment = { timestamp : timestamp, text: text };
-            // setComments([...comments, newComment]);
-
-            // Optionally, you can call the `updateComments` function to pass the comments to a parent component or perform other actions.
-            updateComments( comments ? [...comments, newComment] : [newComment]);
-        } else {
-            Swal.fire('Error', 'Please enter a timestamp and comment text.', 'error');
-        }
-        setAdding(false)
-    }
     const handleComment = () => {
         const audio = document.getElementById("toChange");
         audio.pause();
-        setAdding(true);
+        Swal.fire({
+            title: 'Add your comment',
+            html: `
+                <div style="display: flex; align-items:center; justify-content:center; " > 
+                    <input type="time" id="timestampInput" step="1" style="margin-right:10px;" > </input>
+                    <textarea id="commentInput" placeholder="Write your comment" style="resize: none; font-size:14px;" ></textarea>
+                </div>
+            `,
+            showCancelButton: true,
+            confirmButtonText: 'Submit',
+            showLoaderOnConfirm: true,
+            preConfirm: async () => {
 
+                try {
+
+                    const timestamp = document.getElementById('timestampInput').value;
+                    const text = document.getElementById('commentInput').value;
+
+                    if (timestamp && text !== "") {
+                        const newComment = { timestamp: timestamp, text: text };
+                        await updateComments(comments ? [...comments, newComment] : [newComment]);
+                    } else {
+                        Swal.showValidationMessage('Please enter a timestamp and comment text.');
+                    }
+                } catch (error) {
+                    throw error;
+                }
+            },
+            allowOutsideClick: () => !Swal.isLoading(),
+            customClass: {
+                confirmButton: 'custom-swal-confirm-button',
+                cancelButton: 'custom-swal-cancel-button',
+                choosefile: 'swal2-file-input',
+            },
+        }).then((result) => {
+            console.log("after . then", result)
+            if (result.isConfirmed) {
+                Swal.fire("Sucessfully Done", "", 'success')
+            }
+        }).catch((error) => {
+            Swal.fire("Failure adding comment", "", 'error')
+        });
     }
     const handleCommentClick = (timestamp) => {
         seekToTimestamp(timestamp);
-      };
+    };
+    const deleteComment = (comment) => {
+        const updatedComments = comments.filter((c) => c !== comment);
+        updateComments(updatedComments);
+    };
     const sortedcmnts = comments && Object.values(comments).sort((a, b) => {
         return a.timestamp.localeCompare(b.timestamp);
-      });
-    
+    });
+
 
     return (
         <>
-            <div>
-                { sortedcmnts && sortedcmnts.map((comment, index) => (
+            <div className="cmnts">
+                {sortedcmnts && sortedcmnts.map((comment, index) => (
                     <div key={index} className="comment"  >
-                        <span style={{color:'blue', textDecoration:'underline',cursor: 'pointer' }} onClick={() => handleCommentClick(comment.timestamp)} >{comment.timestamp}</span>
-                        <p>{comment.text}</p>
+                        <div>
+                            <span style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }} onClick={() => handleCommentClick(comment.timestamp)} >{comment.timestamp}</span>
+                            <p>{comment.text}</p>
+                        </div>
+                        <FontAwesomeIcon onClick={() => deleteComment(comment)} icon={faTrash} className='delete-btn' />
                     </div>
                 ))}
             </div>
-            {
-                adding &&
-                <form onSubmit={handleSubmit}>
-                    <input type="time" id="timestampInput" step={1} onChange={ (e) => {setTimeStamp(e.target.value)} } />
-                    <textarea id="commentInput" onChange={ (e) => {setText(e.target.value)} } />
-                    <input type="submit" />
-                </form>
-            }
-            <button className='' onClick={handleComment} > Add Comment </button>
+            <button className='add-comments-button' onClick={handleComment} > Add Comment </button>
         </>
     );
 };
 
 export default Comments;
-
-
-
-//   const [isEditing, setIsEditing] = useState(false);
-
-//   // Filter comments based on current time
-//   const currentcomment = editedcomments.find(
-//     (comment) =>
-//       comment.startTime / 1000 <= currentTime && comment.endTime / 1000 > currentTime
-//   );
-
-//   // Function to handle comment text change
-//   const handlecommentChange = (e) => {
-//     const updatedcommentText = e.target.value;
-//     setEditedcomments((prevcomments) =>
-//       prevcomments.map((comment) =>
-//         comment === currentcomment ? { ...comment, text: updatedcommentText } : comment
-//       )
-//     );
-//   };
-//   const handleEdit = async () => {
-//     if(isEditing){ //save btn clicked
-//         await Swal.fire({
-//         title: 'Save Changes',
-//         text: 'Are you sure you want to change the comment?',
-//         icon: 'question',
-//         showCancelButton: true,
-//         confirmButtonColor: '#d33',
-//         cancelButtonColor: '#3085d6',
-//         confirmButtonText: 'Save',
-//         cancelButtonText: 'Cancel',
-//         showLoaderOnConfirm: true,
-//         preConfirm: async() => {
-//           try {
-//             const cancleBtn = Swal.getCancelButton()
-//             cancleBtn.style.display = "none"
-//             await updatecomments(editedcomments);
-//           } catch (error) {
-//             Swal.fire('Error', 'An error occurred while saving the changes.', 'error');
-//           }
-//         }
-//       });
-//     };
-//     setIsEditing(!isEditing)
-//   };

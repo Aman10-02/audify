@@ -28,7 +28,7 @@ const BookCard = () => {
   };
 
   const sortedKeys = Object.keys(auds).sort((a, b) => {
-    return new Date(auds[b].createdOn) - new Date(auds[a].createdOn);
+    return new Date(auds[b].updatedOn) - new Date(auds[a].updatedOn);
   });
 
   const handleDelete = async (fileName) => {

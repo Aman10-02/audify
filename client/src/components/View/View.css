@@ -50,28 +50,52 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
+  /* align-items: center; */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 20px 48px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
-.cmnts .comment {
-  background-color: #ffffff;
+.comment {
+  /* position: absolute; */
+  background-color: #dbe5f6;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
   font-size: 14px;
+  display: flex;
+  justify-content: space-between;
   
-
+  box-shadow: 0 10px 25px rgb(0 0 0 / 5%), 0 20px 48px rgb(0 0 0 / 5%), 0 1px 4px rgb(0 0 0 / 5%);
+  /* border: solid 1px; */
+}
+.comment p{
+  margin: 0px;
+}
+.delete-btn{
+  display: none;
+  /* position: relative ; */
+  top: 0px;
+  right: 0px;
+  
+}
+.delete-btn:hover{
+  cursor: pointer;
+  color: red;
 }
 
+.comment:hover{
+  .delete-btn{
+    display: block;
+  }
+}
 .cmnts::-webkit-scrollbar {
   width: 8px; /* Set the width of the scrollbar */
-  background-color: rgba(0, 0, 0, 0.1); /* Set the background color of the scrollbar */
+
 }
 
 .cmnts::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.3); /* Set the color of the scrollbar thumb */
-  border-radius: 4px; /* Round the corners of the scrollbar thumb */
+  border-radius: 10px; /* Round the corners of the scrollbar thumb */
 }
 
 .cmnts::-webkit-scrollbar-thumb:hover {
@@ -79,7 +103,9 @@
 }
 
 .cmnts::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.1); /* Set the background color of the scrollbar track */
+  background-color: rgba(0, 0, 0, 0.2); /* Set the background color of the scrollbar track */
+  border-radius: 5px;
+  margin: 5px;
 }
 
 
