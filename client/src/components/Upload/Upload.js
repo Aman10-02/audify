@@ -10,7 +10,7 @@ import {
 import { getFirestore } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import './Upload.css'
+import "./Upload.css";
 
 function Upload() {
   const navigate = useNavigate();
@@ -26,6 +26,7 @@ function Upload() {
     const uploadTask = uploadBytesResumable(storageRef, file);
     uploadTask.on(
       "state_changed",
+
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -55,22 +56,24 @@ function Upload() {
         console.log("first : ", data, JSON.stringify(data));
         const db = getFirestore(app);
         const toUpload = {};
-        toUpload[fileName] =  { 
-                          createdOn : Date(),
-                          updatedOn : Date(),
-                          url : data.url,
-                          captions : data.captions,
-                          duration: data.duration
-                        }
-        console.log(toUpload)
-        const fileRef = doc(db, "Files", auth.currentUser.uid );
-        deleteObject(storageRef).then(() => {
-          console.log("File deleted successfully")
-        }).catch((error) => {
-          console.log(error);
-        });
-        await setDoc(fileRef, toUpload ,{merge: true})
-        navigate('/');
+        toUpload[fileName] = {
+          createdOn: Date(),
+          updatedOn: Date(),
+          url: data.url,
+          captions: data.captions,
+          duration: data.duration,
+        };
+        console.log(toUpload);
+        const fileRef = doc(db, "Files", auth.currentUser.uid);
+        deleteObject(storageRef)
+          .then(() => {
+            console.log("File deleted successfully");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        await setDoc(fileRef, toUpload, { merge: true });
+        navigate("/");
       }
     );
   };
@@ -110,7 +113,6 @@ function Upload() {
         }} >play</div>
       </>
       } */}
-      
     </div>
   );
 }
