@@ -55,14 +55,9 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 20px 48px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
-<<<<<<< HEAD
-.cmnts .comment {
-  background-color: #ddd;
-=======
 .comment {
   /* position: absolute; */
   background-color: #dbe5f6;
->>>>>>> 0a12e480c63a59591fd3f908fb4f309468036d25
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
